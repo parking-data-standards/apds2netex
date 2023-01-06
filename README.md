@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/badge/license-GPL_v3-informational)](/LICENSE)
-# netex-producer
+# apds2netex 
 an Open-Source APDS-to-NeTEx Adapter
 
 ## Starting Point and Motivation
@@ -22,7 +22,7 @@ Concerning the APDS standard, the proposed work will be based on the contents of
 
 ### NeTEx
 Copies of the NeTEx specifications that this project is based on can be found in this repository:
-* [NF_Profil-NeTEx-pour-les-ParkingsF-v1.1.pdf](/specs/NF_Profil-NeTEx-pour-les-ParkingsF-v1.2a.pdf)
+* [NF_Profil-NeTEx-pour-les-ParkingsF-v1.2a.pdf](/specs/NF_Profil-NeTEx-pour-les-ParkingsF-v1.2a.pdf)
 * [Profil-NeTEx-elements-communsF-v2.2.pdf](/specs/Profil-NeTEx-elements-communsF-v2.2.pdf) _(only the elements used in the Parking Profile)_
 
 ## Project Artefacts
