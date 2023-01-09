@@ -66,7 +66,7 @@ The technical approach is this:
 
 #### Selected Aspects
 ##### Implementation Decisions
-This project started as a (minimal) proof of concept, and as a consequence, some implementation decisions were made under consideration of budgetary constraints. The most prominent example is the fact that the actual mapping logic between the two models has been implemented **programmatically**. And while there might always be cases where this cannot be avoided, it would be desirable to pursue a rather declarative approach, using a domain specific language such as e.g. XSLT. The latter is not a direct option as - other than NeTEx - there is no XML schema definition for APDS. This shall not affect users in any way as the converter library is processing perfectly valid NeTEx output.
+This project started as a (minimal) proof of concept, and as a consequence, some implementation decisions were made under consideration of budgetary constraints. The most prominent example is the fact that the actual mapping logic between the two models has been implemented **programmatically**. And while there might always be cases where this cannot be avoided, it would be desirable to pursue a rather declarative approach, using a domain specific language such as e.g. XSLT. The latter is not a direct option as - other than NeTEx - there is no XML schema definition for APDS. This shall not affect users in any way as the converter library is producing perfectly valid NeTEx output.
 
 ##### Enumerations
 There are cases where there might be no exact equivalent for a particular enum value. In those instances, the converter falls back to a more generic variant (e.g. "other") if available.
@@ -74,8 +74,8 @@ There are cases where there might be no exact equivalent for a particular enum v
 ##### Identifiers
 While the current approach for generating valid identifiers works, it might be considered for future improvements. For the time being, users can use the converter's out-of-the-box ids or opt to manipulate them themselves after the converter has done its work.
 
-##### APDS Qualifications
-There are cases where NeTEx does not provide a suitable equivalent of an APDS entity. The community should discuss how to deal with this (e.g. generation of automatically-generated descriptive text).
+##### Mapping Challenges
+There are cases where NeTEx does not provide a suitable equivalent of an APDS entity. The community should discuss how to deal with this (e.g. generation of automatically-generated descriptive text vs. leaving this to users). An example are the APDS-defined qualifications that go beyond what currently is representable in NeTEx.
 
 ### Validation of the Result
 Via this approach, schema conformity is ensured to a great extent. Even though the project is using a sub-set of the NeTEx schema, the output will always successfully validate against the official full-blown _NeTEx\_publication.xsd_. 
