@@ -12,6 +12,7 @@ an Open-Source APDS-to-NeTEx Adapter
 [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result Validation](#validation-of-the-result)  
 [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Build Instructions](#build-instructions)  
 [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Command Line Utility](#command-line-utility)  
+[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demo App Code Snippet](#demo-app-code-snippet)  
 
 ## Starting Point and Motivation
 ### APDS
@@ -291,7 +292,7 @@ The project repository contains a set of example input files (places, rights, ra
   }
 ]
 ```
-##### NeTEx result example
+#### NeTEx result example
 An example for the corresponding library-generated NeTEx equivalent can be found in `src/test/resources/temp/arndale.xml`
 
 ```xml
@@ -423,5 +424,50 @@ An example for the corresponding library-generated NeTEx equivalent can be found
         </CompositeFrame>
     </dataObjects>
 </PublicationDelivery>
+
+```
+#### Demo App Code Snippet
+As you can see from the demo app, library usage is quite straight-forward. All you have to do is
+* create a new instance of the `Apds2NetexBuilder` class,
+* configure the input parameters and
+* invoke the **build()** method
+
+The builder will tell you if the process has been successful. If not, you can obtain a description of the last error. Otherwise, you can use the convenience method `NetexSerializer.serializer()` to output a string representation of the result.
+<br/>
+
+```java
+public class DemoApp
+{
+
+    public static void main( String[] args )
+    {
+
+        System.out.println( "Apds2Netex Example CLI" );
+
+        /*
+         * instantiate and configure builder
+         */
+        Apds2NetexBuilder builder = Apds2NetexBuilder
+                .newInstance()
+                .usingPlaces( getParameterValue( PLACES_FILE, args))
+                .usingRates( getParameterValue( RATES_FILE, args))
+                .usingRights( getParameterValue( RIGHTS_FILE, args));
+
+        /*
+         * invoke the converter
+         */
+        PublicationDelivery publication = builder.build();
+
+        /*
+         * output the result
+         */
+        if ( builder.isSuccess()) {
+            String payload = NetexSerializer.serialize( publication, PublicationDelivery.class);
+            System.out.println( payload);
+        } else {
+            System.out.println( "error: " + builder.getLastError());
+        }
+    }
+}
 
 ```
