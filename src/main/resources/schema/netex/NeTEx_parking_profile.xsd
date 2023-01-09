@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" version="1.1.1" id="NeTEx_publication_parking">
+
+
+    <xsd:element name="PublicationDelivery" type="PublicationDeliveryStructure"/>
+
+    <!-- ==================================================================================================== -->
+
+    <xsd:complexType name="PublicationDeliveryStructure">
+
+        <xsd:sequence>
+            <xsd:element name="PublicationTimestamp" type="xsd:dateTime"/>
+            <xsd:element name="ParticipantRef" type="xsd:normalizedString"/>
+            <xsd:element name="dataObjects" type="dataObjectsStructure" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="version" type="xsd:NMTOKEN" default="1.0"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="Parking">
+        <xsd:sequence>
+            <xsd:element name="validityConditions">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="AvailabilityCondition" type="AvailabilityCondition" minOccurs="0" maxOccurs="unbounded" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Name" type="MultilingualString" minOccurs="0"/>
+            <xsd:element name="Description" type="MultilingualString" minOccurs="0" />
+            <xsd:group ref="ParkingDetailsGroup"/>
+            <xsd:group ref="ParkingChargeGroup"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
+    </xsd:complexType>
+
+    <xsd:group name="ParkingDetailsGroup">
+        <xsd:sequence>
+            <xsd:element name="Centroid" type="SimplePoint_VersionStructure" minOccurs="0" />
+            <xsd:element name="PostalAddress" type="PostalAddress" minOccurs="0"/>
+            <xsd:element name="PublicCode" type="xsd:normalizedString" minOccurs="0"/>
+            <xsd:element name="ParkingType" type="ParkingTypeEnumeration" minOccurs="0"/>
+            <xsd:element name="ParkingLayout" type="ParkingLayoutEnumeration" minOccurs="0"/>
+            <xsd:element name="PrincipalCapacity" type="xsd:nonNegativeInteger" minOccurs="0"/>
+            <xsd:element name="TotalCapacity" type="xsd:nonNegativeInteger" minOccurs="0"/>
+            <xsd:element name="NumberOfBaysWithRecharging" type="xsd:nonNegativeInteger" minOccurs="0" />
+            <xsd:element name="RechargingAvailable" type="xsd:boolean" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="ParkingChargeGroup">
+        <xsd:sequence>
+            <xsd:element name="ParkingPaymentProcess" type="ParkingPaymentProcessListOfEnumerations" minOccurs="0"/>
+            <xsd:element name="PaymentMethods" type="PaymentMethodListOfEnumerations" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <!-- ==================================================================================================== -->
+
+    <xsd:complexType name="dataObjectsStructure">
+        <xsd:sequence>
+            <xsd:element name="CompositeFrame" type="CompositeFrame_VersionStructure" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CompositeFrame_VersionStructure">
+        <xsd:sequence>
+            <xsd:element name="frames" type="frames_RelStructure" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="frames_RelStructure">
+        <xsd:sequence>
+            <xsd:element name="GeneralFrame" type="GeneralFrame_VersionStructure" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="GeneralFrame_VersionStructure">
+        <xsd:sequence>
+            <xsd:element name="TypeOfFrameRef" minOccurs="1" maxOccurs="1" type="TypeOfFrameRefStructure"/>
+            <xsd:element name="members">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Parking" type="Parking" minOccurs="0" maxOccurs="unbounded"/>
+                        <xsd:element name="ParkingTariff" type="ParkingTariff" minOccurs="0" maxOccurs="unbounded"/>
+                        <xsd:element ref="GeneralOrganisation" minOccurs="0" maxOccurs="unbounded" />
+                        <xsd:element name="ResponsibilitySet" type="ResponsibilitySet" minOccurs="0" maxOccurs="unbounded" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="TypeOfFrameRefStructure">
+        <xsd:simpleContent>
+            <xsd:restriction base="TypeOfValueRefStructure">
+                <xsd:attribute name="ref" type="TypeOfFrameIdType" use="required"/>
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TypeOfValueRefStructure">
+        <xsd:simpleContent>
+            <xsd:restriction base="VersionOfObjectRefStructure">
+                <xsd:attribute name="ref" type="TypeOfValueIdType" use="required"/>
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="VersionOfObjectRefStructure">
+        <xsd:simpleContent>
+            <xsd:extension base="ObjectIdType">
+                <xsd:attribute name="nameOfRefClass" type="NameOfClass" use="optional"/>
+                <xsd:attributeGroup ref="ReferenceModificationDetailsGroup"/>
+                <xsd:attribute name="modification" type="ModificationEnumeration" use="optional"/>
+                <xsd:attribute name="ref" type="ObjectIdType" use="required"/>
+                <xsd:attribute name="versionRef" type="VersionIdType" use="optional"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="ModificationEnumeration">
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="new"/>
+            <xsd:enumeration value="revise"/>
+            <xsd:enumeration value="delete"/>
+            <xsd:enumeration value="unchanged"/>
+            <xsd:enumeration value="delta"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="NameOfClass">
+        <xsd:restriction base="xsd:Name"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ParkingIdType">
+        <xsd:restriction base="ObjectIdType"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="VersionIdType">
+        <xsd:restriction base="ObjectIdType"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="TypeOfFrameIdType">
+        <xsd:restriction base="TypeOfValueIdType"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="TypeOfValueIdType">
+        <xsd:restriction base="ObjectIdType"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ObjectIdType">
+        <xsd:restriction base="xsd:normalizedString"/>
+    </xsd:simpleType>
+
+    <xsd:complexType name="ParkingRefStructure">
+        <xsd:attribute name="ref" type="ParkingIdType" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="MultilingualString">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:normalizedString">
+                <xsd:attribute name="lang" type="xsd:language" />
+                <xsd:attribute name="textIdType" type="xsd:normalizedString" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="StatusEnumeration">
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="active"/>
+            <xsd:enumeration value="inactive"/>
+            <xsd:enumeration value="other"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="PaymentMethodEnumeration">
+        <xsd:restriction base="xsd:normalizedString">
+            <xsd:enumeration value="cash"/>
+            <xsd:enumeration value="cashExactChangeOnly"/>
+            <xsd:enumeration value="cashAndCard"/>
+            <xsd:enumeration value="coin"/>
+            <xsd:enumeration value="banknote"/>
+            <xsd:enumeration value="cheque"/>
+            <xsd:enumeration value="travellersCheque"/>
+            <xsd:enumeration value="postalOrder"/>
+            <xsd:enumeration value="creditCard"/>
+            <xsd:enumeration value="debitCard"/>
+            <xsd:enumeration value="cardsOnly"/>
+            <xsd:enumeration value="travelCard"/>
+            <xsd:enumeration value="contactlessPaymentCard"/>
+            <xsd:enumeration value="contactlessTravelCard"/>
+            <xsd:enumeration value="directDebit"/>
+            <xsd:enumeration value="bankTransfer"/>
+            <xsd:enumeration value="epayDevice"/>
+            <xsd:enumeration value="epayAccount"/>
+            <xsd:enumeration value="sms"/>
+            <xsd:enumeration value="mobilePhone"/>
+            <xsd:enumeration value="voucher"/>
+            <xsd:enumeration value="token"/>
+            <xsd:enumeration value="warrant"/>
+            <xsd:enumeration value="mileagePoints"/>
+            <xsd:enumeration value="other"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="PaymentMethodListOfEnumerations">
+        <xsd:list itemType="PaymentMethodEnumeration"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ParkingPaymentProcessListOfEnumerations">
+        <xsd:list itemType="ParkingPaymentProcessEnumeration"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ParkingPaymentProcessEnumeration">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="free"/>
+            <xsd:enumeration value="payAtBay"/>
+            <xsd:enumeration value="payAndDisplay"/>
+            <xsd:enumeration value="payAtExitBoothManualCollection"/>
+            <xsd:enumeration value="payAtMachineOnFootPriorToExit"/>
+            <xsd:enumeration value="payByPrepaidToken"/>
+            <xsd:enumeration value="payByMobileDevice"/>
+            <xsd:enumeration value="undefined"/>
+            <xsd:enumeration value="other"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ParkingTypeEnumeration">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="parkAndRide"/>
+            <xsd:enumeration value="liftShareParking"/>
+            <xsd:enumeration value="urbanParking"/>
+            <xsd:enumeration value="airportParking"/>
+            <xsd:enumeration value="trainStationParking"/>
+            <xsd:enumeration value="exhibitionCentreParking"/>
+            <xsd:enumeration value="rentalCarParking"/>
+            <xsd:enumeration value="shoppingCentreParking"/>
+            <xsd:enumeration value="motorwayParking"/>
+            <xsd:enumeration value="roadside"/>
+            <xsd:enumeration value="parkingZone"/>
+            <xsd:enumeration value="undefined"/>
+            <xsd:enumeration value="cycleRental"/>
+            <xsd:enumeration value="other"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ParkingLayoutEnumeration">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="covered"/>
+            <xsd:enumeration value="openSpace"/>
+            <xsd:enumeration value="multistorey"/>
+            <xsd:enumeration value="underground"/>
+            <xsd:enumeration value="roadside"/>
+            <xsd:enumeration value="undefined"/>
+            <xsd:enumeration value="other"/>
+            <xsd:enumeration value="cycleHire"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- === ORGANISATIONS AND RESPONSIBILITIES === -->
+
+    <xsd:group name="OrganisationCodeGroup">
+        <xsd:sequence>
+            <xsd:element name="CompanyNumber" type="xsd:normalizedString" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="OrganisationNameGroup">
+        <xsd:sequence>
+            <xsd:element name="Name" type="MultilingualString" minOccurs="0"/>
+            <xsd:element name="ShortName" type="MultilingualString" minOccurs="0"/>
+            <xsd:element name="LegalName" type="MultilingualString" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="OrganisationGroup">
+        <xsd:sequence>
+            <xsd:group ref="OrganisationCodeGroup"/>
+            <xsd:group ref="OrganisationNameGroup"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:element name="GeneralOrganisation">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:group ref="OrganisationGroup" minOccurs="1" />
+            </xsd:sequence>
+            <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="ResponsibilitySet">
+        <xsd:sequence>
+            <xsd:element name="roles">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="ResponsibilityRoleAssignment" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
+    </xsd:complexType>
+
+    <xsd:element name="ResponsibilityRoleAssignment">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="StakeholderRoleType" type="StakeholderRoleTypeListOfEnumerations" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:simpleType name="StakeholderRoleTypeListOfEnumerations">
+        <xsd:list itemType="StakeholderRoleTypeEnumeration"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="StakeholderRoleTypeEnumeration">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Planning"/>
+            <xsd:enumeration value="Operation"/>
+            <xsd:enumeration value="Control"/>
+            <xsd:enumeration value="Reservation"/>
+            <xsd:enumeration value="EntityLegalOwnership"/>
+            <xsd:enumeration value="FareManagement"/>
+            <xsd:enumeration value="SecurityManagement"/>
+            <xsd:enumeration value="DataRegistrar"/>
+            <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ParkingUserEnumeration">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="allUsers"/>
+            <xsd:enumeration value="staff"/>
+            <xsd:enumeration value="visitors"/>
+            <xsd:enumeration value="registeredDisabled"/>
+            <xsd:enumeration value="registered"/>
+            <xsd:enumeration value="rental"/>
+            <xsd:enumeration value="doctors"/>
+            <xsd:enumeration value="residentsWithPermits"/>
+            <xsd:enumeration value="reservationHolders"/>
+            <xsd:enumeration value="emergencyServices"/>
+            <xsd:enumeration value="other"/>
+            <xsd:enumeration value="all"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ParkingUserListOfEnumerations">
+        <xsd:list itemType="ParkingUserEnumeration"/>
+    </xsd:simpleType>
+
+    <!-- === ATTRIBUTE GROUPS === -->
+
+    <xsd:attributeGroup name="DataManagedObjectAttributeGroup">
+        <xsd:attribute name="nameOfClass" type="xsd:Name" use="optional"/>
+        <xsd:attribute name="id" type="xsd:normalizedString" use="optional"/>
+        <xsd:attribute name="dataSourceRef" type="xsd:normalizedString" use="optional"/>
+        <xsd:attribute name="created" type="xsd:dateTime" use="optional"/>
+        <xsd:attribute name="changed" type="xsd:dateTime" use="optional"/>
+        <xsd:attribute name="modification" type="ModificationEnumeration" use="optional" default="new"/>
+        <xsd:attribute name="version" type="xsd:normalizedString" use="optional"/>
+        <xsd:attribute name="status" type="StatusEnumeration" use="optional" default="active"/>
+        <xsd:attribute name="derivedFromVersionRef" type="xsd:normalizedString" use="optional"/>
+        <xsd:attribute name="compatibleWithVersionFrameVersionRef" type="xsd:normalizedString" use="optional"/>
+        <xsd:attribute name="derivedFromObjectRef" type="xsd:normalizedString" use="optional"/>
+        <xsd:attribute name="responsibilitySetRef" type="xsd:normalizedString" use="optional"/>
+    </xsd:attributeGroup>
+
+    <xsd:attributeGroup name="ReferenceModificationDetailsGroup">
+        <xsd:attribute name="created" type="xsd:dateTime" use="optional"/>
+        <xsd:attribute name="changed" type="xsd:dateTime" use="optional"/>
+        <xsd:attribute name="version" type="VersionIdType" use="optional"/>
+    </xsd:attributeGroup>
+
+    <!-- === PARKING TARIFFS === -->
+
+    <xsd:complexType name="TimeIntervalPrice">
+        <xsd:sequence>
+            <xsd:element name="Amount" type="xsd:double" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ParkingChargeBand">
+        <xsd:sequence>
+            <xsd:element name="MaximumStay" type="xsd:duration" minOccurs="0"/>
+            <xsd:element name="prices">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="TimeIntervalPrice" type="TimeIntervalPrice" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ParkingTariff">
+        <xsd:sequence>
+            <xsd:element name="Name" type="MultilingualString" minOccurs="0"/>
+            <xsd:element name="ParkingUserType" type="ParkingUserEnumeration" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="appliesTo">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ParkingRef" type="ParkingRefStructure" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="parkingChargeBands">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ParkingChargeBand" type="ParkingChargeBand" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="SimplePoint_VersionStructure" abstract="false">
+        <xsd:sequence>
+            <xsd:element name="Name" type="MultilingualString" minOccurs="0" />
+            <xsd:element name="Location" type="LocationStructure" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- === LOCATION INFORMATION === -->
+
+    <xsd:complexType name="LocationStructure">
+        <xsd:sequence>
+            <xsd:element name="Longitude" type="LongitudeType" />
+            <xsd:element name="Latitude" type="LatitudeType" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="LongitudeType">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:minInclusive value="-180"/>
+            <xsd:maxInclusive value="180"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="LatitudeType">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:minInclusive value="-90"/>
+            <xsd:maxInclusive value="90"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- === ADDRESS INFORMATION === -->
+    <xsd:complexType name="PostalAddress" abstract="false">
+        <xsd:sequence>
+            <xsd:element name="HouseNumber" type="xsd:normalizedString" minOccurs="0" />
+            <xsd:element name="BuildingName" type="MultilingualString" minOccurs="0" />
+            <xsd:element name="AddressLine1" type="MultilingualString" minOccurs="0" />
+            <xsd:element name="AddressLine2" type="MultilingualString" minOccurs="0"/>
+            <xsd:element name="Street" type="MultilingualString" minOccurs="0" />
+            <xsd:element name="Town" type="MultilingualString" minOccurs="0" />
+            <xsd:element name="Suburb" type="MultilingualString" minOccurs="0" />
+            <xsd:element name="PostCode" type="xsd:normalizedString" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup" />
+    </xsd:complexType>
+
+    <!-- === AVAILABILITY INFORMATION === -->
+
+    <xsd:simpleType name="DaysOfWeekListOfEnumerations">
+        <xsd:annotation>
+            <xsd:documentation>Allowed values for List of Days of the Week.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:list itemType="DayOfWeekEnumeration"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="DayOfWeekEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Allowed values for Day of the Week.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Monday"/>
+            <xsd:enumeration value="Tuesday"/>
+            <xsd:enumeration value="Wednesday"/>
+            <xsd:enumeration value="Thursday"/>
+            <xsd:enumeration value="Friday"/>
+            <xsd:enumeration value="Saturday"/>
+            <xsd:enumeration value="Sunday"/>
+            <xsd:enumeration value="Everyday"/>
+            <xsd:enumeration value="Weekdays"/>
+            <xsd:enumeration value="Weekend"/>
+            <xsd:enumeration value="none"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:group name="DayTypeGroup">
+        <xsd:sequence>
+            <xsd:element name="properties" type="propertiesOfDay_RelStructure" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="propertiesOfDay_RelStructure">
+        <xsd:sequence>
+            <xsd:element name="PropertyOfDay">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!--<xsd:group ref="PropertyOfDayGroup"  minOccurs="1" maxOccurs="unbounded"/>-->
+                        <xsd:element name="DaysOfWeek" type="DaysOfWeekListOfEnumerations" minOccurs="0" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:group name="PropertyOfDayGroup">
+        <xsd:sequence>
+            <xsd:element name="DaysOfWeek" type="DaysOfWeekListOfEnumerations" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="AvailabilityCondition" abstract="false">
+        <xsd:sequence>
+            <xsd:element name="IsAvailable" type="xsd:boolean" default="true" minOccurs="0" />
+            <xsd:element name="dayTypes">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="DayType" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:sequence>
+                                        <xsd:group ref="DayTypeGroup"/>
+                                    </xsd:sequence>
+                                </xsd:sequence>
+                                <xsd:attributeGroup ref="DataManagedObjectAttributeGroup" />
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="timebands">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Timeband" type="Timeband" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attributeGroup ref="DataManagedObjectAttributeGroup" />
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="Timeband">
+        <xsd:sequence>
+            <xsd:element name="StartTime" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="EndTime" type="xsd:string" minOccurs="1" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup" />
+    </xsd:complexType>
+</xsd:schema>

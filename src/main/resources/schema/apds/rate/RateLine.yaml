@@ -1,0 +1,14 @@
+type: object
+properties:
+  sequence:
+    type: integer
+  description:
+    $ref: ../common/MultilingualString.yaml
+  rateLineType:
+    type: string
+  value:
+    type: number
+  durationStart:
+    type: string
+  durationEnd:
+    type: string

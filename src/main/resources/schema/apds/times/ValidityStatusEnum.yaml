@@ -1,0 +1,7 @@
+title: ValidityStatusEnum
+type: string
+enum:
+  - active
+  - definedByValidityTimeSpec
+  - planned
+  - suspended

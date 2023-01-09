@@ -1,0 +1,87 @@
+[
+  {
+    "id":"805432",
+    "version":1,
+    "type":"place",
+    "layer":1,
+    "name":{"en":"Arndale"},
+    "indicativePointLocation":{"type":"Point","coordinates":[-2.23873926627018,53.4841328804172]},
+    "description":{"en":"Arndale Car Park in Manchester City"},
+    "areaType":"generalParking",
+    "characteristics":{
+      "accessControlled":false,
+      "evChargingPoints":0,
+      "openToPublic":true,
+      "spacesTotal":1382,
+      "structureGrade":"aboveGround",
+      "structureType":"offStreetStructure"
+    },
+    "contacts":[
+      {
+        "organisationName":{"en":"Manchester City Council"},
+        "type":"operator",
+        "emails":[{"address":"representations@manchester.gov.uk","typeCode":"customerService"}]
+      }
+    ],
+    "rightSpecifications":[
+      {"id":"6091d5d0-5264-4d66-a31a-1a9e2c9eed89","version":1}
+    ],
+    "paymentMethods":[{"paymentMode":["payOnEntry"]}],
+    "placeStreetAddress":{
+      "postCode":"M4 1QB",
+      "city":{"en":"Manchester"},
+      "countryCode":"GB",
+      "addressLines":[
+        {"type":"street","order":0,"text":"High St"}
+      ]
+    },
+    "openingTimes": {
+      "available24hours": true,
+      "openAllYear": true,
+      "accessAndEgress": [
+        {
+          "validity": {
+            "validPeriods": [
+              {
+                "periodName": {
+                  "en": "standardTimes"
+                },
+                "recurringTimePeriodOfDay": {
+                  "startTimeOfPeriod": "08:00",
+                  "endTimeOfPeriod": "19:00"
+                }
+              },
+              {
+                "periodName": {
+                  "en": "Mo-Sat"
+                },
+                "recurringDayWeekMonthPeriod": {
+                  "applicableDay": [
+                    "monday",
+                    "tuesday",
+                    "wednesday",
+                    "thursday",
+                    "friday",
+                    "saturday"
+                  ]
+                }
+              }
+            ],
+            "exceptionPeriods": [
+              {
+                "periodName": {
+                  "en": "not on Sundays"
+                },
+                "recurringDayWeekMonthPeriod": {
+                  "applicableDay": [
+                    "sunday"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

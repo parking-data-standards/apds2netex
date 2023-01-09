@@ -1,0 +1,12 @@
+type: object
+properties:
+  collectionSequence:
+    type: integer
+  applicableCurrency:
+    type: string
+  relativeTimes:
+    type: boolean
+  rateLines:
+    type: array
+    items:
+      $ref: ./RateLine.yaml

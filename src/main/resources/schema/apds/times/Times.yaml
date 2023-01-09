@@ -1,0 +1,11 @@
+title: Times
+type: object
+properties:
+  available24hours:
+    type: boolean
+  openAllYear:
+    type: boolean
+  accessAndEgress:
+    type: array
+    items:
+      $ref: ./AccessAndEgress.yaml

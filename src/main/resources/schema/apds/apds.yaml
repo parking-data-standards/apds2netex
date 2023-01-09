@@ -1,0 +1,213 @@
+openapi: "3.0.0"
+info:
+  title: APDS message protocol
+  description: API specification for the "NPP" APDS model implementation
+  version: "3.0.0"
+  x-audience: external-public
+  contact:
+    name: Markus Schneider
+    email: markus.schneider@plexx-digital.com
+servers:
+  - url: 'https://api-staging.npp.org.uk/v1/parking'
+    description: dev
+paths:
+  '/rights/specs/{rightId}':
+    get:
+      operationId: getOneRight
+      parameters:
+        - in: header
+          name: X-MCC-Access-Token
+          schema:
+            type: string
+        - in: path
+          name: rightId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: expand
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./right/RightSpecification.yaml
+  '/rates/{rateId}':
+    get:
+      operationId: getOneRate
+      parameters:
+        - in: header
+          name: X-MCC-Access-Token
+          schema:
+            type: string
+        - in: path
+          name: rateId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./rate/RateTable.yaml
+  /places:
+    get:
+      summary: retrieve a list of places
+      operationId: getAllPlaces
+      parameters:
+        - in: header
+          name: content-type
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: X-MCC-Access-Token
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: expand
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlacesResponse'
+  /places/{placeId}:
+    get:
+      summary: retrieve a particular of places
+      operationId: getOnePlace
+      parameters:
+        - in: header
+          name: content-type
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: X-MCC-Access-Token
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: expand
+          schema:
+            type: string
+        - in: path
+          name: placeId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+
+  /rights/specs:
+    get:
+      summary: retrieve a list of right specifications
+      operationId: getAllRightSpecifications
+      parameters:
+        - in: header
+          name: X-MCC-Access-Token
+          schema:
+            type: string
+        - in: query
+          name: expand
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRightSpecificationsResponse'
+components:
+  schemas:
+    Place:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          $ref: "./common/MultilingualString.yaml"
+        aliases:
+          type: array
+          items:
+            $ref: "./common/MultilingualString.yaml"
+        description:
+          $ref: "./common/MultilingualString.yaml"
+        type:
+          type: string
+        areaType:
+          type: string
+        layer:
+          type: integer
+        contact:
+          $ref: ./common/Contact.yaml
+        characteristics:
+          $ref: "./place/Characteristics.yaml"
+        rightSpecifications:
+          type: array
+          items:
+            $ref: ./common/VersionedReference.yaml
+        responsibilityRoleAssignment:
+          type: array
+          items:
+            $ref: ./common/ResponsibilityRoleAssignment.yaml
+        indicativePointLocation:
+          $ref: ./place/GeoJsonPoint.yaml
+        placeStreetAddress:
+          $ref: ./place/Address.yaml
+        paymentMethods:
+          type: array
+          items:
+            $ref: ./place/PaymentMethod.yaml
+        openingTimes:
+          $ref: ./times/Times.yaml
+        contacts:
+          type: array
+          items:
+            $ref: ./common/Contact.yaml
+    MetaData:
+      type: object
+      properties:
+        referenceInstant:
+          type: integer
+        offset:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
+    GetRightSpecificationsResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/MetaData'
+        data:
+          type: array
+          items:
+            $ref: "./right/RightSpecification.yaml"
+    GetPlacesResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/MetaData'
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Place"

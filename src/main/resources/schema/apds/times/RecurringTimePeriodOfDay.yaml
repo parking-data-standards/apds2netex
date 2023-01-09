@@ -1,0 +1,7 @@
+title: RecurringTimePeriodOfDay
+type: object
+properties:
+  startTimeOfPeriod:
+    type: string
+  endTimeOfPeriod:
+    type: string

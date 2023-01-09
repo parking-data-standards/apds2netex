@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: string
+  version:
+    type: integer
+  rateTableName:
+    $ref: ../common/MultilingualString.yaml
+  rateLineCollections:
+    type: array
+    items:
+      $ref: ./RateLineCollection.yaml
+  availability:
+    type: string
+  rateResponsibleParty:
+    type: string

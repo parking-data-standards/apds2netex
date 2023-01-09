@@ -1,0 +1,13 @@
+title: PaymentMethod
+x-tags:
+  - payment_method
+description: Provides information on the means of payment available
+type: object
+properties:
+  paymentMode:
+    type: array
+    description: |-
+      Defines the timing of the parking or other
+      mobility related payment
+    items:
+      $ref: ./PaymentTimingEnum.yaml

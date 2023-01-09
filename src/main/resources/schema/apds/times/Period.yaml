@@ -1,0 +1,15 @@
+title: Period
+type: object
+properties:
+  periodName:
+    $ref: ../common/MultilingualString.yaml
+  startOfPeriod:
+    type: string
+    format: date-time
+  endOfPeriod:
+    type: string
+    format: date-time
+  recurringTimePeriodOfDay:
+    $ref: ./RecurringTimePeriodOfDay.yaml
+  recurringDayWeekMonthPeriod:
+    $ref: ./RecurringDayWeekMonthPeriod.yaml

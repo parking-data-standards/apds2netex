@@ -1,0 +1,17 @@
+title: OverallPeriod
+type: object
+properties:
+  overallStartTime:
+    type: string
+    format: date-time
+  overallEndTime:
+    type: string
+    format: date-time
+  validPeriods:
+    type: array
+    items:
+      $ref: ./Period.yaml
+  exceptionPeriods:
+    type: array
+    items:
+      $ref: ./Period.yaml

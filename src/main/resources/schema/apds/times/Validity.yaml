@@ -1,0 +1,19 @@
+title: Validity
+type: object
+properties:
+  validityStatus:
+    $ref: ./ValidityStatusEnum.yaml
+  overallStartTime:
+    type: string
+    format: date-time
+  overallEndTime:
+    type: string
+    format: date-time
+  validPeriods:
+    type: array
+    items:
+      $ref: ./Period.yaml
+  exceptionPeriods:
+    type: array
+    items:
+      $ref: ./Period.yaml

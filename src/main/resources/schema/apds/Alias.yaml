@@ -1,0 +1,7 @@
+type: object
+description: an external property
+properties:
+  language:
+    $ref: "./common/CountryCode.yaml"
+  string:
+    type: string

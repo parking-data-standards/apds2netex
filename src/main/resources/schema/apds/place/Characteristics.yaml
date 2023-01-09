@@ -1,0 +1,14 @@
+type: object
+properties:
+  accessControlled:
+    type: boolean
+  spacesTotal:
+    type: integer
+  evChargingPoints:
+    type: integer
+  structureGrade:
+    $ref: ./StructureGradeEnum.yaml
+  structureType:
+    $ref: ./StructureTypeEnum.yaml
+  openToPublic:
+    type: boolean

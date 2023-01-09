@@ -1,0 +1,23 @@
+type: object
+properties:
+  id:
+    type: string
+  version:
+    type: integer
+  type:
+    type: string
+  description:
+    $ref: ../common/MultilingualString.yaml
+  expiry:
+    type: string
+    format: date-time
+  rateEligibility:
+    type: array
+    items:
+      $ref: ./RateEligibility.yaml
+  hierarchyElements:
+    type: array
+    items:
+      $ref: ../common/VersionedReference.yaml
+  validity:
+    $ref: ../times/Validity.yaml

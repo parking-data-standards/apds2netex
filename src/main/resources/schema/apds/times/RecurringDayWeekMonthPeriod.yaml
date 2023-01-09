@@ -1,0 +1,7 @@
+title: RecurringDayWeekMonthPeriod
+type: object
+properties:
+  applicableDay:
+    type: array
+    items:
+      $ref: ./DayOfWeekEnum.yaml

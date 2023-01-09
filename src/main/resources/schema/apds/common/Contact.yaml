@@ -1,0 +1,15 @@
+type: object
+properties:
+  organisationName:
+    $ref: ./MultilingualString.yaml
+  type:
+    $ref: ./ContactTypeEnum.yaml
+  emails:
+    type: array
+    items:
+      type: object
+      properties:
+        address:
+          type: string
+        typeCode:
+          type: string

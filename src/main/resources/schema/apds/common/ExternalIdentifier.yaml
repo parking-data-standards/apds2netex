@@ -1,0 +1,8 @@
+type: object
+properties:
+  identifier:
+    type: string
+  additionalInformation:
+    type: array
+    items:
+      type: string

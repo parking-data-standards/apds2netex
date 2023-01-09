@@ -1,0 +1,7 @@
+type: object
+properties:
+  type:
+    $ref: ./ContactTypeEnum.yaml
+  organisation:
+    $ref: ./Organisation.yaml
+    
