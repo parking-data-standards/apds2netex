@@ -16,10 +16,10 @@ an Open-Source APDS-to-NeTEx Adapter
 
 ## Starting Point and Motivation
 ### APDS
-With the input of numerous parking industry professionals, the _Alliance for Parking Data Standards_ (https://www.allianceforparkingdatastandards.org) has created the APDS standard. The latest version of the standard specification is v4.0. The _Alliance_ also provides an accompanying APDS Messaging Specification (published on GitHub) to facilitate implementation work for APDS adopters. 
+With the input of numerous parking industry professionals, the _Alliance for Parking Data Standards_ (https://www.allianceforparkingdatastandards.org) has created the APDS standard. The latest version of the standard specification is v4.0. The _Alliance_ also provides an accompanying APDS Messaging Specification (published on GitHub) to facilitate implementation work for APDS adopters. The APDS specifications also form the basis of ISO TS 5206-1:2023 _Parking – Core Data Model_, and the European CEN TS 15167-6:2022 _DATEX II Parking Publications_.
 
 ### NeTEx, NeTEx Parking Profile
-There is a variety of other specifications covering selected aspects of transport and mobility. One such standard specification is Transmodel (EN 12896, http://www.transmodel-cen.eu ), the CEN reference data model for public transport. Transmodel has also been the basis for NeTEx (“Network Timetable Exchange”, http://netex-cen.eu ) which constitutes a CEN Technical Standard for exchanging Public Transport schedules and related data (CEN TS 16614-1, CEN TS 16614-2, CEN TS 16614-3).
+There is a variety of other specifications covering selected aspects of transport and mobility. One such standard specification is Transmodel (EN 12896, http://www.transmodel-cen.eu ), the CEN reference data model for public transport. Transmodel has also been the basis for NeTEx (“Network Timetable Exchange”, http://netex-cen.eu ) which constitutes a CEN Technical Specification for exchanging Public Transport schedules and related data (CEN TS 16614-1, CEN TS 16614-2, CEN TS 16614-3).
 
 There are some profiles using a subset of NetEx. One of them is “NeTEx – Profil Français pour les Parkings”. It is related to parking facilities as one important element in the greater scheme of transport modes. It originally was created to serve as a basis for 3rd parties who are mandated to fulfill the French LOM (Lois d’Orientation pour les Mobilités), a national regulation.
 
