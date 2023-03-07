@@ -20,18 +20,23 @@ an Open-Source APDS-to-NeTEx Adapter
 [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demo App Code Snippet](#demo-app-code-snippet)  
 
 # Starting Point and Motivation
+## Status and request for collaboration
+The content described below provides an initial experimental approach to converting parking data between key standardised formats.  This provides potential tools to support the parking industry make its data available in a regularised manner, and meet some of the requirements that exist for data availability within the European Union. This specific instance of converter supports the conversion of data from APDS format to NeTEx format (see below for further explanation). 
+
+This converter is experimental and it is expected that wider review it likely to result in requests for improvements, additional documentation etc.  Such inputs are warmly welcomed.
+
 ## APDS
-With the input of numerous parking industry professionals, the _Alliance for Parking Data Standards_ (https://www.allianceforparkingdatastandards.org) has created the APDS standard. The latest version of the standard specification is v4.0. The _Alliance_ also provides an accompanying APDS Messaging Specification (published on GitHub) to facilitate implementation work for APDS adopters. The APDS specifications also form the basis of ISO TS 5206-1:2023 _Parking – Core Data Model_, and the European CEN TS 15167-6:2022 _DATEX II Parking Publications_.
+With the input of numerous parking industry professionals, the _Alliance for Parking Data Standards_ (https://www.allianceforparkingdatastandards.org) has created the APDS standard. The latest version of the standard specification is v4.0. The _Alliance_ also provides an accompanying APDS Messaging Specification (published on GitHub) to facilitate implementation work for APDS adopters. The APDS specifications also form the basis of ISO TS 5206-1:2023 _Parking – Core Data Model_, and the European CEN TS 15167-6:2022 _"DATEX II" Parking Publications_.
 
 ## NeTEx, NeTEx Parking Profile
-There is a variety of other specifications covering selected aspects of transport and mobility. One such standard specification is Transmodel (EN 12896, http://www.transmodel-cen.eu ), the CEN reference data model for public transport. Transmodel has also been the basis for NeTEx (“Network Timetable Exchange”, http://netex-cen.eu ) which constitutes a CEN Technical Specification for exchanging Public Transport schedules and related data (CEN TS 16614-1, CEN TS 16614-2, CEN TS 16614-3).
+There is a variety of other specifications covering selected aspects of transport and mobility. One such standard specification is Transmodel (EN 12896, http://www.transmodel-cen.eu ), the CEN reference data model for public transport. Transmodel is the basis for NeTEx (“Network Timetable Exchange”, http://netex-cen.eu ) which constitutes a CEN Technical Specification for exchanging public transport schedules and related data (CEN TS 16614-1, CEN TS 16614-2, CEN TS 16614-3).
 
-There are some profiles using a subset of NetEx. One of them is “NeTEx – Profil Français pour les Parkings”. It is related to parking facilities as one important element in the greater scheme of transport modes. It originally was created to serve as a basis for 3rd parties who are mandated to fulfill the French LOM (Lois d’Orientation pour les Mobilités), a national regulation.
+There are some profiles using a subset of NeTEx. One of them created in France is “NeTEx – Profil Français pour les Parkings”. It is related to parking facilities as one important element in the greater scheme of transport modes. It originally was created to serve as a basis for 3rd parties who are mandated to fulfill the French LOM (Lois d’Orientation pour les Mobilités), a national regulation.
 
 ## APDS-to-NeTEx Adapter
-The sheer number of mobility-related standards and specifications makes it difficult for potential adopters to select the one that best matches their individual requirements, and most of the time, no information is available elaborating on the reciprocal representability between two different standards.
+The sheer number of mobility-related standards and specifications makes it difficult for potential adopters to select the one that best matches their individual requirements, and most of the time, no information is available elaborating on the reciprocal representability and ease of data interchange between two different standards.
 
-The subject of this project is precisely this: a software to convert information available in the APDS Messaging Specification format into its corresponding NeTEx (Parking Profile) representation. That way, implementers can safely base their work on APDS and know that it can be converted into a format processible by NeTEx endpoints (e.g. National Access Points expecting NeTEx-formatted data).
+The subject of this project is precisely this: a software to convert information available in the APDS Messaging Specification format into its corresponding NeTEx (French) (Parking Profile) representation. That way, implementers can safely base their work on APDS and know that it can be converted into a format processible by NeTEx endpoints (e.g. National Access Points expecting NeTEx-formatted data). It is worth noting that there may be different national NeTEx profiles adopted and therefore this adapter should be considered as a proof of concept, and an adaptable basis for wider implementation.
 
 # Structure of this Document
 This document has been created for different audiences: 
@@ -42,10 +47,10 @@ This document has been created for different audiences:
 # Reference Documents
 ## APDS
 Copies of the APDS specifications can be found here: [APDS Specifications](/specs/APDS)  
-In addition to the specifications, the project has been based on the contents of the GitHub repository published at [https://github.com/parkingdata/spec](https://github.com/parkingdata/spec) describing the APDS-favoured interface specification..
+In addition to the specifications, the project has been based on the contents of the GitHub repository published at [https://github.com/parkingdata/spec](https://github.com/parkingdata/spec) describing the APDS-favoured interface specification.
 
 ## NeTEx
-Copies of the NeTEx specifications that this project is based on can be found in this repository:
+Copies of the NeTEx specifications (French profile) that this project is based on can be found in this repository:
 * [NF_Profil-NeTEx-pour-les-ParkingsF-v1.2a.pdf](/specs/NeTEx/NF_Profil-NeTEx-pour-les-ParkingsF-v1.2a.pdf)
 * [Profil-NeTEx-elements-communsF-v2.2.pdf](/specs/NeTEx/Profil-NeTEx-elements-communsF-v2.2.pdf) _(only the elements used in the Parking Profile)_
 
@@ -57,6 +62,8 @@ The [NeTEx Parking Profile Specification](./specs/NF_Profil-NeTEx-pour-les-Parki
 
 ## Reference: 6.2.4.3 Hourly Rate ("Example grille horaire")
 ### NeTEx Version
+Please note French language content, notes and explanations found in this and subsequent examples are taken from the NeTEx profiles XML examples used.
+
 This section provides an example for a typical hourly parking tariff:
 ```xml
 <ParkingTariff id="FR:75105:ParkingTariff:076:Qpark" version="any">
@@ -165,10 +172,11 @@ Using the APDS model, this tariff can be represented using elements from the _RI
 }
 
 ```
-Plase take notice of the fact that the times specified are relative to each other (`relativeTimes`) and hence accumulate, so does the value.
+Please note, the times specified are relative to each other (`relativeTimes`) and hence are add-ons and accumulate, so does the (monetary) value.
 
 #### RightSpecification
 A _RightSpecification_ referencing the  _RateTable_ above then specifies applicability of and eligibility for it.
+Note the RateTable ID is "0376c349-ed20-4f6f-9551-1a82f9f5f734"
 
 ``` json 
 {
@@ -216,7 +224,7 @@ A _RightSpecification_ referencing the  _RateTable_ above then specifies applica
 The example above defines a _RightSpecification_ that
 * references a _RateTable_ defined earlier (`rateEligibility.rate.id`),
 * lists the place(s) to which it is applicable (`hierarchyElements`) as well as
-* an information which user group(s) are eligible fr it (`eligibility.qualification.userQualifications`)
+* indicates which user group(s) are eligible for it (`eligibility.qualification.userQualifications`)
 
 The combination of both, this _RightSpecification_ and the referenced _RateTable_ forms the APDS equivalent of the NeTEx sample _ParkingTariff_ shown earlier.
 
@@ -1343,7 +1351,7 @@ One substantial difference between the two standards becomes clear when you look
 The following table lists the APDS source class/attribute along with its NeTEx equivalent. Some line items provide explanatory comments.
 
 ### Place Hierarchy
-| source | target | comments |
+| source (APDS) | target (NeTEx) | comments |
 | ------ | ------ | -------- |
 | place.id | Parking.id | |
 | place.name | Parking.name | |
