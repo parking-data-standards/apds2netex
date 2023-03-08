@@ -132,7 +132,7 @@ Using the APDS model, this tariff can be represented using elements from the _RI
 {
   "id":"0376c349-ed20-4f6f-9551-1a82f9f5f734",
   "version":1,
-  "rateTableName": {"language":"en", "string": "general tariff"},
+  "rateTableName": [{"language":"en", "string": "general tariff"}],
   "rateLineCollections": [
     {
       "applicableCurrency":"EUR",
@@ -183,10 +183,10 @@ Note the RateTable ID is "0376c349-ed20-4f6f-9551-1a82f9f5f734"
   "id": "6091d5d0-5264-4d66-a31a-1a9e2c9eed89",
   "version": 1,
   "type": "oneTimeUseParking",
-  "description": {
+  "description": [{
     "language": "en",
     "string": "right spec for general tariff"
-  },
+  }],
   "expiry": "2025-12-31T23:59:59+00:00",
   "hierarchyElements": [
     {
@@ -324,7 +324,7 @@ Much like in the previous example, the APDS equivalent will engage the _RateTabl
 {
   "id": "55e10dc6-751d-411d-88b4-e026f9799206",
   "version": 1,
-  "rateTableName": { "language": "en", "string": "rate table for residents (eligible for a reduced rate)"},
+  "rateTableName": [{ "language": "en", "string": "rate table for residents (eligible for a reduced rate)"}],
   "rateLineCollections": [
     {
       "applicableCurrency":"EUR",
@@ -348,7 +348,7 @@ Much like in the previous example, the APDS equivalent will engage the _RateTabl
 {
   "id": "431d0c46-61e4-4421-b256-ae564029d4a7",
   "version": 1,
-  "rateTableName": { "language": "en", "string": "rate table for non-residents"},
+  "rateTableName": [{ "language": "en", "string": "rate table for non-residents"}],
   "rateLineCollections": [
     {
       "applicableCurrency":"EUR",
@@ -374,10 +374,10 @@ Much like in the previous example, the APDS equivalent will engage the _RateTabl
     "id": "d0287a67-10d6-4004-8ae7-399169ab6bef",
     "version": 1,
     "type": "permitParking",
-    "description": {
+    "description": [{
       "language": "en",
       "string": "right specification for resident permit parking"
-    },
+    }],
     "expiry": "2025-12-31T23:59:59+00:00",
     "hierarchyElements": [
       {
@@ -406,7 +406,7 @@ Much like in the previous example, the APDS equivalent will engage the _RateTabl
               ],
               "withMembership": true,
               "membershipNames": [
-                { "language": "en", "string": "seasonTicketHolders"}
+                [{ "language": "en", "string": "seasonTicketHolders"}]
               ]
             }
           ]
@@ -418,10 +418,10 @@ Much like in the previous example, the APDS equivalent will engage the _RateTabl
     "id": "d4c7d0d3-2fcf-4c37-9296-b913a04ad8c0",
     "version": 1,
     "type": "permitParking",
-    "description": {
+    "description": [{
       "language": "en",
       "string": "right specification for non-resident permit parking"
-    },
+    }],
     "expiry": "2025-12-31T23:59:59+00:00",
     "hierarchyElements": [
       {
@@ -450,7 +450,7 @@ Much like in the previous example, the APDS equivalent will engage the _RateTabl
               ],
               "withMembership": true,
               "membershipNames": [
-                { "language": "en", "string": "seasonTicketHolders"}
+                [{ "language": "en", "string": "seasonTicketHolders"}]
               ]
             }
           ]
@@ -817,7 +817,7 @@ The main parking record (will be referenced as "parent" by all its children)
   "version": 1,
   "type": "place",
   "layer": 1,
-  "name": { "language": "en", "string": "PATRIARCHES"},
+  "name": [{ "language": "en", "string": "PATRIARCHES"}],
   "indicativePointLocation": {
     "type": "Point",
     "coordinates": [ 2.3508884, 48.8403437]
@@ -841,7 +841,7 @@ The main parking record (will be referenced as "parent" by all its children)
     "operatingTime": {
       "validPeriods": [
         {
-          "periodName": { "language": "en", "string": "Weekdays"},
+          "periodName": [{ "language": "en", "string": "Weekdays"}],
           "recurringTimePeriodOfDay": {
             "startTimeOfPeriod": "07:00",
             "endTimeOfPeriod": "20:00"
@@ -851,7 +851,7 @@ The main parking record (will be referenced as "parent" by all its children)
           }
         },
         {
-          "periodName": { "language": "en", "string": "Saturday"},
+          "periodName": [{ "language": "en", "string": "Saturday"}],
           "recurringTimePeriodOfDay": {
             "startTimeOfPeriod": "07:00",
             "endTimeOfPeriod": "13:00"
@@ -863,7 +863,7 @@ The main parking record (will be referenced as "parent" by all its children)
       ],
       "exceptionPeriods": [
         {
-          "periodName": { "language": "en", "string": "Sundays and Holidays"},
+          "periodName": [{ "language": "en", "string": "Sundays and Holidays"}],
           "recurringDayWeekMonthPeriod": {
             "applicableDay": [ "sunday"]
           },
@@ -905,7 +905,7 @@ Pedestrian Entrance
   "id": "4e2679ff-1a61-4650-a3c3-4aaed1ea77bd",
   "version": 1,
   "type": "identifiedArea",
-  "name": { "language": "en", "string": "main pedestrian entrance"},
+  "name": [{ "language": "en", "string": "main pedestrian entrance"}],
   "indicativePointLocation": {
     "type": "Point",
     "coordinates": [ 2.3508884, 48.8403437]
@@ -924,9 +924,9 @@ Pedestrian Entrance
   {
     "id": "9e9f135a-bb3b-4381-8ded-fa0a9fee1c0c",
     "version": 1,
-    "name": { "language": "en", "string": "handicapped zone"},
+    "name": [{ "language": "en", "string": "handicapped zone"}],
     "aliases": [
-      { "language": "en", "string": "ZONE VERTE"}
+      [{ "language": "en", "string": "ZONE VERTE"}]
     ],
     "applicableForUsers": [ "disabled", "handicapped", "wheelChairUsers"],
     "characteristics": {
@@ -946,7 +946,7 @@ Pedestrian Entrance
   {
     "id": "ca5ad3a8-a432-4dde-acfe-15699110c3a1",
     "version": 1,
-    "name": { "language": "en", "string": "park and ride zone"},
+    "name": [{ "language": "en", "string": "park and ride zone"}],
     "characteristics": {
       "spacesTotal": 0
     },
@@ -964,7 +964,7 @@ Pedestrian Entrance
   {
     "id": "a90338d4-9097-42fe-a3b4-ca466d4c46e9",
     "version": 1,
-    "name": { "language": "en", "string": "bike parking zone"},
+    "name": [{ "language": "en", "string": "bike parking zone"}],
     "characteristics": {
       "spacesTotal": 20
     },
@@ -989,7 +989,7 @@ Pedestrian Entrance
 {
   "id":"0376c349-ed20-4f6f-9551-1a82f9f5f734",
   "version":1,
-  "rateTableName": {"language":"en", "string": "general tariff"},
+  "rateTableName": [{"language":"en", "string": "general tariff"}],
   "rateLineCollections": [
     {
       "applicableCurrency":"EUR",
@@ -1036,10 +1036,10 @@ Pedestrian Entrance
     "id": "6091d5d0-5264-4d66-a31a-1a9e2c9eed89",
     "version": 1,
     "type": "oneTimeUseParking",
-    "description": {
+    "description": [{
       "language": "en",
       "string": "right spec for general tariff"
-    },
+    }],
     "expiry": "2025-12-31T23:59:59+00:00",
     "hierarchyElements": [
       {
@@ -1079,10 +1079,10 @@ Pedestrian Entrance
     "id": "e8cf6784-8e51-4ee8-b122-6248e6340cf9",
     "version": 1,
     "type": "oneTimeUseParking",
-    "description": {
+    "description": [{
       "language": "en",
       "string": "right spec for handicapped area"
-    },
+    }],
     "expiry": "2025-12-31T23:59:59+00:00",
     "hierarchyElements": [
       {
@@ -1122,10 +1122,10 @@ Pedestrian Entrance
     "id": "0478e936-1c22-48d3-a5ca-9baeec7e6ab5", 
     "version": 1,
     "type": "oneTimeUseParking",
-    "description": {
+    "description": [{
       "language": "en",
       "string": "right spec for general tariff in bike zone"
-    },
+    }],
     "expiry": "2025-12-31T23:59:59+00:00",
     "hierarchyElements": [
       {
@@ -1192,7 +1192,7 @@ Pedestrian Entrance
 {
   "id": "55e10dc6-751d-411d-88b4-e026f9799206",
   "version": 1,
-  "rateTableName": { "language": "en", "string": "rate table for residents (eligible for a reduced rate)"},
+  "rateTableName": [{ "language": "en", "string": "rate table for residents (eligible for a reduced rate)"}],
   "rateLineCollections": [
     {
       "applicableCurrency":"EUR",
@@ -1216,7 +1216,7 @@ Pedestrian Entrance
 {
   "id": "431d0c46-61e4-4421-b256-ae564029d4a7",
   "version": 1,
-  "rateTableName": { "language": "en", "string": "rate table for non-residents"},
+  "rateTableName": [{ "language": "en", "string": "rate table for non-residents"}],
   "rateLineCollections": [
     {
       "applicableCurrency":"EUR",
@@ -1242,10 +1242,10 @@ Pedestrian Entrance
     "id": "d0287a67-10d6-4004-8ae7-399169ab6bef",
     "version": 1,
     "type": "permitParking",
-    "description": {
+    "description": [{
       "language": "en",
       "string": "right specification for resident permit parking"
-    },
+    }],
     "expiry": "2025-12-31T23:59:59+00:00",
     "hierarchyElements": [
       {
@@ -1274,7 +1274,7 @@ Pedestrian Entrance
               ],
               "withMembership": true,
               "membershipNames": [
-                { "language": "en", "string": "seasonTicketHolders"}
+                [{ "language": "en", "string": "seasonTicketHolders"}]
               ]
             }
           ]
@@ -1286,10 +1286,10 @@ Pedestrian Entrance
     "id": "d4c7d0d3-2fcf-4c37-9296-b913a04ad8c0",
     "version": 1,
     "type": "permitParking",
-    "description": {
+    "description": [{
       "language": "en",
       "string": "right specification for non-resident permit parking"
-    },
+    }],
     "expiry": "2025-12-31T23:59:59+00:00",
     "hierarchyElements": [
       {
@@ -1318,7 +1318,7 @@ Pedestrian Entrance
               ],
               "withMembership": true,
               "membershipNames": [
-                { "language": "en", "string": "seasonTicketHolders"}
+                [{ "language": "en", "string": "seasonTicketHolders"}]
               ]
             }
           ]
@@ -1540,9 +1540,9 @@ The project repository contains a set of example input files (places, rights, ra
     "version":1,
     "type":"place",
     "layer":1,
-    "name":{ "language": "en", "string": "Arndale"},
+    "name": [{ "language": "en", "string": "Arndale"}],
     "indicativePointLocation":{"type":"Point","coordinates":[-2.23873926627018,53.4841328804172]},
-    "description":{ "language": "en", "string": "Arndale Car Park in Manchester City"},
+    "description": [{ "language": "en", "string": "Arndale Car Park in Manchester City"}],
     "areaType":"generalParking",
     "characteristics":{
       "accessControlled":false,
@@ -1554,7 +1554,7 @@ The project repository contains a set of example input files (places, rights, ra
     },
     "contacts":[
       {
-        "organisationName":{ "language": "en", "string": "Manchester City Council"},
+        "organisationName": [{ "language": "en", "string": "Manchester City Council"}],
         "type":"operator",
         "emails":[{"address":"representations@manchester.gov.uk","typeCode":"customerService"}]
       }
@@ -1565,7 +1565,7 @@ The project repository contains a set of example input files (places, rights, ra
     "paymentMethods":[{"paymentMode":["payOnEntry"]}],
     "placeStreetAddress":{
       "postCode":"M4 1QB",
-      "city":{"language":"en","string": "Manchester"},
+      "city": [{"language":"en","string": "Manchester"}],
       "countryCode":"GB",
       "addressLines":[
         {"type":"street","order":0,"text":"High St"}
@@ -1579,20 +1579,20 @@ The project repository contains a set of example input files (places, rights, ra
           "validity": {
             "validPeriods": [
               {
-                "periodName": {
+                "periodName": [{
                   "language": "en", 
                   "string": "standardTimes"
-                },
+                }[,
                 "recurringTimePeriodOfDay": {
                   "startTimeOfPeriod": "08:00",
                   "endTimeOfPeriod": "19:00"
                 }
               },
               {
-                "periodName": {
+                "periodName": [{
                   "language": "en",
                   "string": "Mo-Sat"
-                },
+                }],
                 "recurringDayWeekMonthPeriod": {
                   "applicableDay": [
                     "monday",
@@ -1607,10 +1607,10 @@ The project repository contains a set of example input files (places, rights, ra
             ],
             "exceptionPeriods": [
               {
-                "periodName": {
+                "periodName": [{
                   "language": "en",
                   "string": "not on Sundays"
-                },
+                }],
                 "recurringDayWeekMonthPeriod": {
                   "applicableDay": [
                     "sunday"
@@ -1633,7 +1633,7 @@ The project repository contains a set of example input files (places, rights, ra
     "id":"6091d5d0-5264-4d66-a31a-1a9e2c9eed89",
     "version":1,
     "type":"oneTimeUseParking",
-    "description":{ "language": "en", "string": "right specification for Arndale Car Park in Manchester City"},
+    "description": [{ "language": "en", "string": "right specification for Arndale Car Park in Manchester City"}],
     "expiry":"2025-12-31T23:59:59+00:00",
     "hierarchyElements":[{"id":"805432","version":1}],
     "rateEligibility":[
@@ -1650,7 +1650,7 @@ The project repository contains a set of example input files (places, rights, ra
     {
       "validPeriods":[
         {
-          "periodName":{ "language": "en", "string": "all week long"},
+          "periodName": [{ "language": "en", "string": "all week long"}],
           "recurringDayWeekMonthPeriod":{"applicableDay":["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
           }
         }
@@ -1665,19 +1665,19 @@ The project repository contains a set of example input files (places, rights, ra
   {
     "id":"0376c349-ed20-4f6f-9551-1a82f9f5f734",
     "version":1,
-    "rateTableName":{ "language": "en", "string": "rate table for Arndale Car Park in Manchester (general public parking)"},
+    "rateTableName": [{ "language": "en", "string": "rate table for Arndale Car Park in Manchester (general public parking)"}],
     "rateLineCollections":[
       {
         "applicableCurrency":"GBP",
         "collectionSequence":0,
         "rateLines":
         [
-          {"sequence":0,"description":{"language":"en","string": "Up to 1 hour"},"rateLineType":"incrementingRate","value":3.7,"incrementPeriod": "PT1H"},
-          {"sequence":1,"description":{"language":"en","string": "Up to 2 hours"},"rateLineType":"incrementingRate","value":3,"incrementPeriod": "PT1H"},
-          {"sequence":2,"description":{"language":"en","string": "Up to 3 hours"},"rateLineType":"incrementingRate","value":2.5,"incrementPeriod": "PT1H"},
-          {"sequence":3,"description":{"language":"en","string": "Up to 4 hours"},"rateLineType":"incrementingRate","value":3,"incrementPeriod": "PT1H"},
-          {"sequence":4,"description":{"language":"en","string": "Up to 5 hours"},"rateLineType":"incrementingRate","value":3,"incrementPeriod": "PT1H"},
-          {"sequence":5,"description":{"language":"en","string": "Up to 24 hours"},"rateLineType":"incrementingRate","value":5.3,"incrementPeriod": "PT19H"}
+          {"sequence":0,"description":[{"language":"en","string": "Up to 1 hour"}],"rateLineType":"incrementingRate","value":3.7,"incrementPeriod": "PT1H"},
+          {"sequence":1,"description":[{"language":"en","string": "Up to 2 hours"}],"rateLineType":"incrementingRate","value":3,"incrementPeriod": "PT1H"},
+          {"sequence":2,"description":[{"language":"en","string": "Up to 3 hours"}],"rateLineType":"incrementingRate","value":2.5,"incrementPeriod": "PT1H"},
+          {"sequence":3,"description":[{"language":"en","string": "Up to 4 hours"}],"rateLineType":"incrementingRate","value":3,"incrementPeriod": "PT1H"},
+          {"sequence":4,"description":[{"language":"en","string": "Up to 5 hours"}],"rateLineType":"incrementingRate","value":3,"incrementPeriod": "PT1H"},
+          {"sequence":5,"description":[{"language":"en","string": "Up to 24 hours"}],"rateLineType":"incrementingRate","value":5.3,"incrementPeriod": "PT19H"}
         ],
         "relativeTimes":true
       }
