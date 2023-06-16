@@ -143,13 +143,19 @@ components:
         version:
           type: integer
         name:
-          $ref: "./common/MultilingualString.yaml"
-        aliases:
           type: array
           items:
             $ref: "./common/MultilingualString.yaml"
+        aliases:
+          type: array
+          items:
+            type: array
+            items:
+              $ref: "./common/MultilingualString.yaml"
         description:
-          $ref: "./common/MultilingualString.yaml"
+          type: array
+          items:
+            $ref: "./common/MultilingualString.yaml"
         type:
           type: string
         areaType:
@@ -164,7 +170,7 @@ components:
           type: array
           items:
             $ref: ./common/VersionedReference.yaml
-        responsibilityRoleAssignment:
+        responsibilityRoleAssignments:
           type: array
           items:
             $ref: ./common/ResponsibilityRoleAssignment.yaml
@@ -182,6 +188,20 @@ components:
           type: array
           items:
             $ref: ./common/Contact.yaml
+        marketing:
+          type: object
+          properties:
+            webURLs:
+              type: array
+              items:
+                type: string
+        times:
+          type: array
+          items:
+            type: object
+            properties:
+              operatingTime:
+                $ref: ./times/OverallPeriod.yaml
     MetaData:
       type: object
       properties:
