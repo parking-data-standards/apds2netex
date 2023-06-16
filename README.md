@@ -1582,7 +1582,7 @@ The project repository contains a set of example input files (places, rights, ra
                 "periodName": [{
                   "language": "en", 
                   "string": "standardTimes"
-                }[,
+                }],
                 "recurringTimePeriodOfDay": {
                   "startTimeOfPeriod": "08:00",
                   "endTimeOfPeriod": "19:00"
