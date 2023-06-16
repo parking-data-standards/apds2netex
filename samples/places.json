@@ -1,0 +1,88 @@
+[
+{
+  "id": "e9943458-d679-431d-9545-bf9139ab73af",
+  "version": 1,
+  "type": "place",
+  "layer": 1,
+  "name": [{ "language": "en", "string": "THE PATRIARCHS"}],
+  "indicativePointLocation": {
+    "type": "Point",
+    "coordinates": [ 2.3508884, 48.8403437]
+  },
+  "placeStreetAddress": {
+    "postCode": "75015",
+    "addressLines": [
+      { "order": 0, "text": "Demo City", "type": "town"},
+      { "order": 1, "text": "Daubenton Road", "type": "street"},
+      { "order": 2, "text": "42", "type": "building"}
+    ]
+  },
+  "characteristics": {
+    "structureGrade": "underground",
+    "spacesTotal": 334
+  },
+  "marketing": {
+    "webURLs": [ "https://fr.parkindigo.com/parking/paris-75005/patriarches-75050300"]
+  },
+  "times": [
+	{
+	    "operatingTime": {
+      	"validPeriods": [
+        	{
+          	"periodName": [{ "language": "en", "string": "Weekdays"}],
+          	"recurringTimePeriodOfDay": {
+            	"startTimeOfPeriod": "07:00",
+            	"endTimeOfPeriod": "20:00"
+          	},
+          	"recurringDayWeekMonthPeriod": {
+            	"applicableDay": [ "monday","tuesday","wednesday","thursday","friday"]
+          	}
+        	},
+        	{
+          	"periodName": [{ "language": "en", "string": "Saturday"}],
+          	"recurringTimePeriodOfDay": {
+            	"startTimeOfPeriod": "07:00",
+            	"endTimeOfPeriod": "13:00"
+          	},
+          	"recurringDayWeekMonthPeriod": {
+            	"applicableDay": [ "saturday"]
+          	}
+        	}
+      	],
+      	"exceptionPeriods": [
+        	{
+          	"periodName": [{ "language": "en", "string": "Sundays and Holidays"}],
+          	"recurringDayWeekMonthPeriod": {
+            	"applicableDay": [ "sunday"]
+          	},
+          	"recurringSpecialDay": [{
+            	"specialDayType": "publicHoliday"
+          	}]
+        	}
+      	]
+    	}
+	}
+  ],
+  "rightSpecifications": [
+    { "id": "6091d5d0-5264-4d66-a31a-1a9e2c9eed89", "version": 1}
+  ],
+  "responsibilityRoleAssignments": [
+    {
+      "type": "owner",
+      "organisation": {
+        "id": "21750001600019",
+        "name": "Demo City"
+      }
+    },
+    {
+      "type": "operator",
+      "organisation": {
+        "id": "50472714000056",
+        "name": "Demo Operator",
+        "tradingName": "Demo",
+        "linkToLogo": "https://demoop.com/logo.svg"
+      }
+    }
+  ]
+}
+]

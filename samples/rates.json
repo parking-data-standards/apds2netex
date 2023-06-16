@@ -1,0 +1,43 @@
+[
+{
+  "id":"0376c349-ed20-4f6f-9551-1a82f9f5f734",
+  "version":1,
+  "rateTableName": [{"language":"en", "string": "general tariff"}],
+  "rateLineCollections": [
+    {
+      "applicableCurrency":"EUR",
+      "collectionSequence":0,
+      "relativeTimes":true,
+      "rateLines": [
+        { 
+          "sequence": 0,
+          "incrementPeriod": "PT1H",
+          "value": 4.4
+        },
+        { 
+          "sequence": 1,
+          "incrementPeriod": "PT1H",
+          "value": 3.3
+        },
+        { 
+          "sequence": 2,
+          "incrementPeriod": "PT1H",
+          "value": 4.4
+        },
+        { 
+          "sequence": 3,
+          "incrementPeriod": "PT1H",
+          "value": 4.4
+        },
+        { 
+          "sequence": 4,
+          "incrementPeriod": "PT20H",
+          "value": 23.1
+        }
+      ]
+    }		
+  ],
+  "availability": "public",
+  "rateResponsibleParty": "QPARK"
+}
+]

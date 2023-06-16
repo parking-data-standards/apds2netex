@@ -1,0 +1,41 @@
+[
+{
+  "id": "6091d5d0-5264-4d66-a31a-1a9e2c9eed89",
+  "version": 1,
+  "type": "oneTimeUseParking",
+  "description": [{
+    "language": "en",
+    "string": "right spec for general tariff"
+  }],
+  "expiry": "2025-12-31T23:59:59+00:00",
+  "hierarchyElements": [
+    {
+      "id": "e9943458-d679-431d-9545-bf9139ab73af",
+      "version": 1
+    }
+  ],
+  "rateEligibility": [
+    {
+      "id": "c4de275f-0a89-4fed-81de-e1215968a6df",
+      "version": 1,
+      "rate": {
+        "id": "0376c349-ed20-4f6f-9551-1a82f9f5f734",
+        "version": 1
+      },
+      "eligibility": {
+        "qualification": [
+          {
+            "userQualifications": [
+              {
+                "userGroup": {
+                  "entryDefinedValue": "allUsers"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+]
