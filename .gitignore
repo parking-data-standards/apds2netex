@@ -19,3 +19,8 @@ hs_err_pid*
 target
 .gradle
 build
+
+# other files we do not need
+docs
+.openapi-generator
+.idea
