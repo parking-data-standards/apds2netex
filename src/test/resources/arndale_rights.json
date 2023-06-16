@@ -3,7 +3,7 @@
     "id":"6091d5d0-5264-4d66-a31a-1a9e2c9eed89",
     "version":1,
     "type":"oneTimeUseParking",
-    "description":{"en":"right specification for Arndale Car Park in Manchester City"},
+    "description":[{"language":"en", "string":"right specification for Arndale Car Park in Manchester City"}],
     "expiry":"2025-12-31T23:59:59+00:00",
     "hierarchyElements":[{"id":"805432","version":1}],
     "rateEligibility":[
@@ -20,7 +20,7 @@
     {
       "validPeriods":[
         {
-          "periodName":{"en":"all week long"},
+          "periodName":[{"language":"en", "string":"all week long"}],
           "recurringDayWeekMonthPeriod":{"applicableDay":["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
           }
         }

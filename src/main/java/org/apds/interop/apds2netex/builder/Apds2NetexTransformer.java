@@ -4,16 +4,19 @@ import generated.eu.cen.netex.*;
 import generated.org.apds.model.*;
 import org.apds.interop.apds2netex.netex.ObjectFactoryHelper;
 
+import javax.xml.bind.annotation.XmlEnumValue;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static generated.eu.cen.netex.StakeholderRoleTypeEnumeration.ENTITY_LEGAL_OWNERSHIP;
+
 public class Apds2NetexTransformer {
 
     public static ParkingTariff populateFromApdsRate( ParkingTariff tariff, RateTableDTO rate, List<String> placeIds) {
 
-        tariff.setName( ObjectFactoryHelper.buildMultilingualString( ObjectFactoryHelper.MLS_DEFAULT_LANG, rate.getRateTableName().getEn()));
+        tariff.setName( ObjectFactoryHelper.buildMultilingualString( ObjectFactoryHelper.MLS_DEFAULT_LANG, rate.getRateTableName().get(0).getString()));
 
         if ( placeIds != null) {
             for ( String placeId : placeIds) {
@@ -54,16 +57,17 @@ public class Apds2NetexTransformer {
         // BASICS
 
         parking.setId( place.getId());
-        parking.setName( ObjectFactoryHelper.buildMultilingualString( place.getName().getEn()));
+        parking.setName( ObjectFactoryHelper.buildMultilingualString( place.getName().get(0).getString()));
+        parking.setResponsibilitySetRef( String.format( ObjectFactoryHelper.RESPSETREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, place.getId()));
 
         if ( place.getAliases() != null && place.getAliases().size() > 0) {
-            parking.setPublicCode( place.getAliases().get(0).getEn());
+            parking.setPublicCode( place.getAliases().get(0).get(0).getString());
         } else {
             parking.setPublicCode( place.getId());
         }
 
-        if ( place.getDescription() != null && place.getDescription().getEn() != null) {
-            parking.setDescription( ObjectFactoryHelper.buildMultilingualString( place.getDescription().getEn()));
+        if ( place.getDescription() != null && place.getDescription().get(0).getString() != null) {
+            parking.setDescription( ObjectFactoryHelper.buildMultilingualString( place.getDescription().get(0).getString()));
         }
 
         // OPENING TIMES
@@ -79,7 +83,7 @@ public class Apds2NetexTransformer {
                         if (validPeriods != null) {
                             int index = 1;
                             for (PeriodDTO period : validPeriods) {
-                                AvailabilityCondition condition = createInstanceOfAvailabilityCondition(period.getPeriodName().getEn(), index, "any", true);
+                                AvailabilityCondition condition = createInstanceOfAvailabilityCondition(period.getPeriodName().get(0).getString(), index, "any", true);
                                 RecurringTimePeriodOfDayDTO timePeriod = period.getRecurringTimePeriodOfDay();
                                 if ( timePeriod != null) {
                                     addTimeband( condition, create( index, timePeriod.getStartTimeOfPeriod(), timePeriod.getEndTimeOfPeriod()));
@@ -95,7 +99,7 @@ public class Apds2NetexTransformer {
                         if (exceptionPeriods != null) {
                             int index = 1;
                             for (PeriodDTO period : exceptionPeriods) {
-                                AvailabilityCondition condition = createInstanceOfAvailabilityCondition( period.getPeriodName().getEn(), index, "any", false);
+                                AvailabilityCondition condition = createInstanceOfAvailabilityCondition( period.getPeriodName().get(0).getString(), index, "any", false);
                                 RecurringTimePeriodOfDayDTO timePeriod = period.getRecurringTimePeriodOfDay();
                                 if ( timePeriod != null) {
                                     addTimeband( condition, create( index, timePeriod.getStartTimeOfPeriod(), timePeriod.getEndTimeOfPeriod()));
@@ -177,7 +181,6 @@ public class Apds2NetexTransformer {
             }
         }
 
-
         return parking;
     }
 
@@ -233,13 +236,48 @@ public class Apds2NetexTransformer {
         }
     }
 
+    public static List<GeneralOrganisation> getOrganisationsFromPlaceDTO( PlaceDTO place) {
+        List<GeneralOrganisation> orgs = new ArrayList<>();
+        if ( place.getResponsibilityRoleAssignments() != null) {
+            for ( ResponsibilityRoleAssignmentDTO assignment : place.getResponsibilityRoleAssignments()) {
+                if ( assignment.getOrganisation() != null) {
+                    OrganisationDTO apdsOrg = assignment.getOrganisation();
+                    GeneralOrganisation org = ObjectFactoryHelper.createInstanceOfGeneralOrganisation( apdsOrg.getId(), apdsOrg.getName(), apdsOrg.getId());
+                    orgs.add( org);
+                }
+            }
+        }
+        return orgs;
+    }
+
+    public static ResponsibilitySet responsibilitySetFromPlaceDTO( PlaceDTO place) {
+
+        ResponsibilitySet set = ObjectFactoryHelper.createInstanceOfResponsibilitySet( String.format( ObjectFactoryHelper.RESPSETREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, place.getId()));
+        set.setRoles( new ResponsibilitySet.Roles());
+        if ( place.getResponsibilityRoleAssignments() != null && place.getResponsibilityRoleAssignments().size() > 0) {
+            for ( ResponsibilityRoleAssignmentDTO roleAssignment : place.getResponsibilityRoleAssignments()) {
+                ResponsibilityRoleAssignmentType assignment = new ResponsibilityRoleAssignmentType();
+                assignment.getStakeholderRoleType().add( roleTypeFromApdsRoleType( roleAssignment.getType()));
+                ResponsibilityRoleAssignmentType.ResponsibleOrganisationRef orgRef = new ResponsibilityRoleAssignmentType.ResponsibleOrganisationRef();
+                if ( roleAssignment.getOrganisation() != null && roleAssignment.getOrganisation().getId() != null) {
+                    orgRef.setRef(roleAssignment.getOrganisation().getId());
+                } else {
+                    orgRef.setRef( ObjectFactoryHelper.DEFAULT_REF);
+                }
+                assignment.setResponsibleOrganisationRef( orgRef);
+                set.getRoles().getResponsibilityRoleAssignment().add( assignment);
+            }
+        }
+        return set;
+    }
+
     private static PostalAddress postalAddressFromAddressDTO( AddressDTO apdsAddress, String placeId) {
 
         PostalAddress address = ObjectFactoryHelper.createInstanceOfPostalAddress( placeId);
 
         // city
         if ( apdsAddress.getCity() != null) {
-            address.setTown( ObjectFactoryHelper.buildMultilingualString( apdsAddress.getCity().getEn()));
+            address.setTown( ObjectFactoryHelper.buildMultilingualString( apdsAddress.getCity().get(0).getString()));
         }
 
         // postcode
@@ -252,6 +290,8 @@ public class Apds2NetexTransformer {
             for ( AddressLineDTO line : apdsAddress.getAddressLines()) {
                 if ( line.getType().equals( AddressLineTypeEnumDTO.STREET)) {
                     address.setStreet( ObjectFactoryHelper.buildMultilingualString( line.getText()));
+                } else if ( line.getType().equals( AddressLineTypeEnumDTO.TOWN)) {
+                    address.setTown( ObjectFactoryHelper.buildMultilingualString( line.getText()));
                 }
             }
         }
@@ -286,5 +326,25 @@ public class Apds2NetexTransformer {
         return processes;
     }
 
+    private static StakeholderRoleTypeEnumeration roleTypeFromApdsRoleType( ContactTypeEnumDTO apdsContactType) {
+
+        if ( apdsContactType == null) {
+            return StakeholderRoleTypeEnumeration.OTHER;
+        }
+
+        switch ( apdsContactType) {
+            case EMERGENCYCONTACT:
+            case CUSTOMERSERVICE:
+            case OPERATOR:
+                return StakeholderRoleTypeEnumeration.OPERATION;
+            case OWNER:
+                return StakeholderRoleTypeEnumeration.ENTITY_LEGAL_OWNERSHIP;
+            case SECURITYSERVICE:
+                return StakeholderRoleTypeEnumeration.SECURITY_MANAGEMENT;
+            case PROPERTYMANAGER:
+                return StakeholderRoleTypeEnumeration.CONTROL;
+        }
+        return StakeholderRoleTypeEnumeration.OTHER;
+    }
 
 }

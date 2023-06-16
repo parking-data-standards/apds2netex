@@ -3,7 +3,9 @@ properties:
   sequence:
     type: integer
   description:
-    $ref: ../common/MultilingualString.yaml
+    type: array
+    items:
+      $ref: ../common/MultilingualString.yaml
   rateLineType:
     type: string
   value:
@@ -11,4 +13,6 @@ properties:
   durationStart:
     type: string
   durationEnd:
+    type: string
+  incrementPeriod:
     type: string

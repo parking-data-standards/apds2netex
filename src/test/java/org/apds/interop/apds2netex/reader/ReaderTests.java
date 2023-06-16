@@ -46,11 +46,11 @@ public class ReaderTests {
         PlaceDTO place1 = places.get(0);
         assertEquals( "id must match", PLACE1_ID, place1.getId());
         assert place1.getName() != null;
-        assertEquals( "name must match", PLACE1_NAME, place1.getName().getEn());
+        assertEquals( "name must match", PLACE1_NAME, place1.getName().get(0).getString());
         PlaceDTO place2 = places.get(1);
         assertEquals( "id must match", PLACE2_ID, place2.getId());
         assert place2.getName() != null;
-        assertEquals( "name must match", PLACE2_NAME, place2.getName().getEn());
+        assertEquals( "name must match", PLACE2_NAME, place2.getName().get(0).getString());
     }
 
     @Test

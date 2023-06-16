@@ -1,0 +1,7 @@
+title: Qualification
+type: object
+properties:
+  userQualifications:
+    type: array
+    items:
+      $ref: ./UserQualification.yaml

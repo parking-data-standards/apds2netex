@@ -6,3 +6,5 @@ properties:
     type: integer
   rate:
     $ref: ../common/VersionedReference.yaml
+  eligibility:
+    $ref: ./Eligibility.yaml

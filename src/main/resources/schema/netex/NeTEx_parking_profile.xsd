@@ -296,7 +296,7 @@
             <xsd:element name="roles">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element ref="ResponsibilityRoleAssignment" maxOccurs="unbounded"/>
+                        <xsd:element name="ResponsibilityRoleAssignment" type="ResponsibilityRoleAssignmentType" maxOccurs="unbounded"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
@@ -304,13 +304,16 @@
         <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
     </xsd:complexType>
 
-    <xsd:element name="ResponsibilityRoleAssignment">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element name="StakeholderRoleType" type="StakeholderRoleTypeListOfEnumerations" minOccurs="0"/>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element>
+    <xsd:complexType name="ResponsibilityRoleAssignmentType">
+        <xsd:sequence>
+            <xsd:element name="StakeholderRoleType" type="StakeholderRoleTypeListOfEnumerations" minOccurs="0"/>
+            <xsd:element name="ResponsibleOrganisationRef">
+                <xsd:complexType>
+                    <xsd:attribute name="ref" type="xsd:string"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
 
     <xsd:simpleType name="StakeholderRoleTypeListOfEnumerations">
         <xsd:list itemType="StakeholderRoleTypeEnumeration"/>

@@ -1,8 +1,10 @@
 package org.apds.interop.apds2netex.builder;
 
 
+import generated.eu.cen.netex.GeneralOrganisation;
 import generated.eu.cen.netex.Parking;
 import generated.eu.cen.netex.ParkingTariff;
+import generated.eu.cen.netex.ResponsibilitySet;
 import generated.org.apds.model.PlaceDTO;
 import generated.org.apds.model.RateTableDTO;
 import generated.org.apds.model.RightSpecificationDTO;
@@ -130,6 +132,15 @@ public class Apds2NetexBuilder {
             Apds2NetexTransformer.populateFromApdsPlace( parking, place);
             ObjectFactoryHelper.addMember( publication, parking);
 
+            if ( place.getResponsibilityRoleAssignments() != null) {
+                ResponsibilitySet respSet = Apds2NetexTransformer.responsibilitySetFromPlaceDTO( place);
+                ObjectFactoryHelper.addMember( publication, respSet);
+                List<GeneralOrganisation> organisations = Apds2NetexTransformer.getOrganisationsFromPlaceDTO( place);
+                for ( GeneralOrganisation org : organisations) {
+                    ObjectFactoryHelper.addMember( publication, org);
+                }
+            }
+
             // RIGHT SPECIFICATION + RATES
             VersionedReferenceDTO rightRef = place.getRightSpecifications() != null ? place.getRightSpecifications().get(0) : null;
             RightSpecificationDTO right = rightRef != null ? ApdsDataParser.getRightById( rightRef.getId(), rights) : null;
@@ -169,5 +180,5 @@ public class Apds2NetexBuilder {
     public boolean isSuccess() { return lastError == null;}
     public Apds2NetexBuilder forParticipantRef( String participantRef) { this.PARTICIPANT_REF = participantRef; return this;}
     public Apds2NetexBuilder forFrameId( String frameId) { this.FRAME_ID = frameId; return this;}
-    private String getNonNullName( PlaceDTO place) { return place.getName() != null && place.getName().getEn() != null ? place.getName().getEn() : "";}
+    private String getNonNullName( PlaceDTO place) { return place.getName() != null && place.getName().size() > 0 ? place.getName().get(0).getString() : "";}
 }

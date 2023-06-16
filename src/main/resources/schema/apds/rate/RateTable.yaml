@@ -5,7 +5,9 @@ properties:
   version:
     type: integer
   rateTableName:
-    $ref: ../common/MultilingualString.yaml
+    type: array
+    items:
+      $ref: ../common/MultilingualString.yaml
   rateLineCollections:
     type: array
     items:

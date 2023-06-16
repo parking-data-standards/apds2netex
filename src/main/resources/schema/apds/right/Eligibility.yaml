@@ -1,0 +1,11 @@
+title: Eligibility
+type: object
+properties:
+  id:
+    type: string
+  version:
+    type: integer
+  qualification:
+    type: array
+    items:
+      $ref: ./Qualification.yaml

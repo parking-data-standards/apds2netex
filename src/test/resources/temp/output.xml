@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex">
+    <PublicationTimestamp>2023-06-16T12:56:08.495+02:00</PublicationTimestamp>
+    <ParticipantRef>P1</ParticipantRef>
+    <dataObjects>
+        <CompositeFrame id="FR:CompositeFrame:2fab1f10-83bf-405f-84a0-93c68ce4ca55:LOC" created="2023-06-16T12:56:08.495+02:00" version="1">
+            <frames>
+                <GeneralFrame id="F1" version="1">
+                    <TypeOfFrameRef ref="FR:TypeOfFrame:NETEX_PARKING">version="2.01:FR-NETEX_PARKING-1.0"</TypeOfFrameRef>
+                    <members/>
+                </GeneralFrame>
+            </frames>
+        </CompositeFrame>
+    </dataObjects>
+</PublicationDelivery>

@@ -1,0 +1,9 @@
+title: ReferencedCodeListEntry
+type: object
+properties:
+  codeListEntryId:
+    $ref: ./Reference.yaml
+  codeListId:
+    $ref: ./VersionedReference.yaml
+  entryDefinedValue:
+    type: string

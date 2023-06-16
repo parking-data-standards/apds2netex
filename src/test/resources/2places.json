@@ -1,4 +1,4 @@
 [
-  { "id":  "place1_id", "version":  1, "name":  { "en":  "place1_name"}},
-  { "id":  "place2_id", "version":  1, "name":  { "en":  "place2_name"}}
+  { "id":  "place1_id", "version":  1, "name":  [{ "language":"en", "string":"place1_name"}]},
+  { "id":  "place2_id", "version":  1, "name":  [{ "language":"en", "string":"place2_name"}]}
 ]

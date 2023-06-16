@@ -4,9 +4,9 @@
     "version":1,
     "type":"place",
     "layer":1,
-    "name":{"en":"Arndale"},
+    "name":[{"language":"en","string":"Arndale"}],
     "indicativePointLocation":{"type":"Point","coordinates":[-2.23873926627018,53.4841328804172]},
-    "description":{"en":"Arndale Car Park in Manchester City"},
+    "description":[{"language":"en", "string":"Arndale Car Park in Manchester City"}],
     "areaType":"generalParking",
     "characteristics":{
       "accessControlled":false,
@@ -18,7 +18,7 @@
     },
     "contacts":[
       {
-        "organisationName":{"en":"Manchester City Council"},
+        "organisationName":[{"language":"en","string":"Manchester City Council"}],
         "type":"operator",
         "emails":[{"address":"representations@manchester.gov.uk","typeCode":"customerService"}]
       }
@@ -29,7 +29,7 @@
     "paymentMethods":[{"paymentMode":["payOnEntry"]}],
     "placeStreetAddress":{
       "postCode":"M4 1QB",
-      "city":{"en":"Manchester"},
+      "city":[{"language":"en","string":"Manchester"}],
       "countryCode":"GB",
       "addressLines":[
         {"type":"street","order":0,"text":"High St"}
@@ -43,18 +43,18 @@
           "validity": {
             "validPeriods": [
               {
-                "periodName": {
-                  "en": "standardTimes"
-                },
+                "periodName":
+                  [{ "language":"en", "string":"standardTimes"}]
+                ,
                 "recurringTimePeriodOfDay": {
                   "startTimeOfPeriod": "08:00",
                   "endTimeOfPeriod": "19:00"
                 }
               },
               {
-                "periodName": {
-                  "en": "Mo-Sat"
-                },
+                "periodName":
+                  [{"language":"en","string": "Mo-Sat"}]
+                ,
                 "recurringDayWeekMonthPeriod": {
                   "applicableDay": [
                     "monday",
@@ -69,9 +69,9 @@
             ],
             "exceptionPeriods": [
               {
-                "periodName": {
-                  "en": "not on Sundays"
-                },
+                "periodName":
+                  [{"language":"en", "string":"not on Sundays"}]
+                ,
                 "recurringDayWeekMonthPeriod": {
                   "applicableDay": [
                     "sunday"

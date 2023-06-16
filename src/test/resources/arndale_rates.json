@@ -2,19 +2,19 @@
   {
     "id":"0376c349-ed20-4f6f-9551-1a82f9f5f734",
     "version":1,
-    "rateTableName":{"en":"rate table for Arndale Car Park in Manchester (general public parking)"},
+    "rateTableName":[{"language":"en", "string":"rate table for Arndale Car Park in Manchester (general public parking)"}],
     "rateLineCollections":[
       {
         "applicableCurrency":"GBP",
         "collectionSequence":0,
         "rateLines":
         [
-          {"sequence":0,"description":{"en":"Up to 1 hour"},"rateLineType":"incrementingRate","value":3.7,"durationStart":"00:00","durationEnd":"01:00"},
-          {"sequence":1,"description":{"en":"Up to 2 hours"},"rateLineType":"incrementingRate","value":6.7,"durationStart":"01:00","durationEnd":"02:00"},
-          {"sequence":2,"description":{"en":"Up to 3 hours"},"rateLineType":"incrementingRate","value":9.2,"durationStart":"02:01","durationEnd":"03:00"},
-          {"sequence":3,"description":{"en":"Up to 4 hours"},"rateLineType":"incrementingRate","value":12.2,"durationStart":"03:01","durationEnd":"04:00"},
-          {"sequence":4,"description":{"en":"Up to 5 hours"},"rateLineType":"incrementingRate","value":15.2,"durationStart":"04:01","durationEnd":"05:00"},
-          {"sequence":5,"description":{"en":"Up to 24 hours"},"rateLineType":"incrementingRate","value":20.5,"durationStart":"05:01","durationEnd":"24:00"}
+          {"sequence":0,"description":[{"language":"en","string":"Up to 1 hour"}],"rateLineType":"incrementingRate","value":3.7,"durationStart":"00:00","durationEnd":"01:00"},
+          {"sequence":1,"description":[{"language":"en","string":"Up to 2 hours"}],"rateLineType":"incrementingRate","value":6.7,"durationStart":"01:00","durationEnd":"02:00"},
+          {"sequence":2,"description":[{"language":"en","string":"Up to 3 hours"}],"rateLineType":"incrementingRate","value":9.2,"durationStart":"02:01","durationEnd":"03:00"},
+          {"sequence":3,"description":[{"language":"en","string":"Up to 4 hours"}],"rateLineType":"incrementingRate","value":12.2,"durationStart":"03:01","durationEnd":"04:00"},
+          {"sequence":4,"description":[{"language":"en","string":"Up to 5 hours"}],"rateLineType":"incrementingRate","value":15.2,"durationStart":"04:01","durationEnd":"05:00"},
+          {"sequence":5,"description":[{"language":"en","string":"Up to 24 hours"}],"rateLineType":"incrementingRate","value":20.5,"durationStart":"05:01","durationEnd":"24:00"}
         ],
         "relativeTimes":true
       }

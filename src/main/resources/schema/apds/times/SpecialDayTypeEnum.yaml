@@ -1,0 +1,12 @@
+title: SpecialDayTypeEnum
+type: string
+enum:
+  - dayBeforePublicHoliday
+  - dayFollowingPublicHoliday
+  - inLieuOfPublicHoliday
+  - longWeekendDay
+  - other
+  - publicEventDay
+  - publicHoliday
+  - schoolDay
+  - schoolHolidays

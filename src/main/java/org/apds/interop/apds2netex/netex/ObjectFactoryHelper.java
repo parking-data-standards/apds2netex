@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class ObjectFactoryHelper {
 
+    public static final String DEFAULT_REF = "DEFAULT";
     public static final String MLS_DEFAULT_LANG = "GB";
     public static final String DEFAULT_VERSION = "1";
     public static final String DEFAULT_PUBLICATION_VERSION = "1.0";
@@ -14,6 +15,7 @@ public class ObjectFactoryHelper {
     public final static String NETEX_PARKING_VERSION = "version=\"2.01:FR-NETEX_PARKING-1.0\"";
     public final static String PARKING_TYPE_OF_FRAME = "FR:TypeOfFrame:NETEX_PARKING";
     private static final String ADDRESS_ID_PATTERN = "%s:PostalAddress:%s:LOC";
+    public static final String RESPSETREF_ID_PATTERN = "%s:ResponsibilitySetRef:%s:LOC";
     private static final String TIMEINTERVAL_ID_PATTERN = "%s:TimeIntervalPrice:%s:LOC";
     private static final ObjectFactory netexFactory = new ObjectFactory();
 
@@ -35,6 +37,8 @@ public class ObjectFactoryHelper {
             pub.getDataObjects().getCompositeFrame().getFrames().getGeneralFrame().get(0).getMembers().getParkingTariff().add( (ParkingTariff) newMember);
         } else if ( newMember instanceof GeneralOrganisation) {
             pub.getDataObjects().getCompositeFrame().getFrames().getGeneralFrame().get(0).getMembers().getGeneralOrganisation().add((GeneralOrganisation) newMember);
+        } else if ( newMember instanceof ResponsibilitySet) {
+            pub.getDataObjects().getCompositeFrame().getFrames().getGeneralFrame().get(0).getMembers().getResponsibilitySet().add((ResponsibilitySet) newMember);
         }
         return pub;
     }
@@ -49,6 +53,12 @@ public class ObjectFactoryHelper {
         return point;
     }
 
+    public static ResponsibilitySet createInstanceOfResponsibilitySet( String id) {
+        ResponsibilitySet set = netexFactory.createResponsibilitySet();
+        set.setVersion( ANY_VERSION);
+        set.setId( id);
+        return set;
+    }
 
     public static PostalAddress createInstanceOfPostalAddress( String id) {
         PostalAddress address = netexFactory.createPostalAddress();

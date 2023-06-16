@@ -1,0 +1,11 @@
+title: VersionedIdentity
+type: object
+properties:
+  id:
+    type: string
+  version:
+    type: integer
+  className:
+    type: string
+required:
+  - id

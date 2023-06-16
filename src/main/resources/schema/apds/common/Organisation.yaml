@@ -6,6 +6,10 @@ properties:
     type: integer
   name:
     type: string
+  tradingName:
+    type: string
+  linkToLogo:
+    type: string
   externalIdentifier:
     type: array
     items:

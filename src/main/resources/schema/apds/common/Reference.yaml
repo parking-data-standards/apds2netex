@@ -1,7 +1,9 @@
+title: Reference
 type: object
 properties:
-  language:
+  id:
     type: string
-  string:
+  className:
     type: string
-
+required:
+  - id

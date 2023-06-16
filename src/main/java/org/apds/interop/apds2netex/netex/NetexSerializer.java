@@ -1,7 +1,5 @@
 package org.apds.interop.apds2netex.netex;
 
-import org.apache.commons.io.output.XmlStreamWriter;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;

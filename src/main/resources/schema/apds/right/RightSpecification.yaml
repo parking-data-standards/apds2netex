@@ -7,7 +7,9 @@ properties:
   type:
     type: string
   description:
-    $ref: ../common/MultilingualString.yaml
+    type: array
+    items:
+      $ref: ../common/MultilingualString.yaml
   expiry:
     type: string
     format: date-time

@@ -1,7 +1,9 @@
 type: object
 properties:
   organisationName:
-    $ref: ./MultilingualString.yaml
+    type: array
+    items:
+      $ref: ./MultilingualString.yaml
   type:
     $ref: ./ContactTypeEnum.yaml
   emails:

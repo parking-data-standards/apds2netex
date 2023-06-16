@@ -10,7 +10,9 @@ properties:
     items:
       $ref: ./AddressLine.yaml
   city:
-    $ref: ../common/MultilingualString.yaml
+    type: array
+    items:
+      $ref: ../common/MultilingualString.yaml
   countryCode:
     $ref: ../common/CountryCode.yaml
   postCode:
