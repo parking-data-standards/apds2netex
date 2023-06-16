@@ -30,3 +30,4 @@ build
 api/
 docs/
 src/main/java/META-INF.JAXB/
+output.xml
