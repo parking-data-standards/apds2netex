@@ -19,15 +19,3 @@ hs_err_pid*
 target
 .gradle
 build
-
-# IDE files
-**/.DS_Store
-.idea/
-*.iml
-
-
-# unneeded generated files
-api/
-docs/
-src/main/java/META-INF.JAXB/
-output.xml
