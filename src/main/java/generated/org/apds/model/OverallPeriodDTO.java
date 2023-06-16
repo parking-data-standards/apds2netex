@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   OverallPeriodDTO.JSON_PROPERTY_EXCEPTION_PERIODS
 })
 @JsonTypeName("OverallPeriod")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:19:50.624355+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T14:26:16.713251+02:00[Europe/Berlin]")
 public class OverallPeriodDTO {
   public static final String JSON_PROPERTY_OVERALL_START_TIME = "overallStartTime";
   private OffsetDateTime overallStartTime;

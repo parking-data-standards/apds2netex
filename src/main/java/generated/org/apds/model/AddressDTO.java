@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   AddressDTO.JSON_PROPERTY_POST_CODE
 })
 @JsonTypeName("Address")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:19:50.624355+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T14:26:16.713251+02:00[Europe/Berlin]")
 public class AddressDTO {
   public static final String JSON_PROPERTY_ADDRESS_LINES = "addressLines";
   private List<AddressLineDTO> addressLines = null;

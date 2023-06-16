@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   PeriodRecurringSpecialDayDTO.JSON_PROPERTY_SPECIAL_DAY_TYPE
 })
 @JsonTypeName("Period_recurringSpecialDay")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:19:50.624355+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T14:26:16.713251+02:00[Europe/Berlin]")
 public class PeriodRecurringSpecialDayDTO {
   public static final String JSON_PROPERTY_SPECIAL_DAY_TYPE = "specialDayType";
   private SpecialDayTypeEnumDTO specialDayType;

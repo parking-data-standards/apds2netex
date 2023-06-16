@@ -1,5 +1,6 @@
 package org.apds.interop.apds2netex.builder;
 
+import com.google.common.collect.PeekingIterator;
 import generated.eu.cen.netex.*;
 import generated.org.apds.model.*;
 import org.apds.interop.apds2netex.netex.ObjectFactoryHelper;
@@ -73,6 +74,43 @@ public class Apds2NetexTransformer {
         // OPENING TIMES
 
         parking.setValidityConditions( new Parking.ValidityConditions());
+
+        if ( place.getTimes() != null && place.getTimes().get(0).getOperatingTime() != null) {
+            OverallPeriodDTO overall = place.getTimes().get(0).getOperatingTime();
+            List<PeriodDTO> validPeriods = overall.getValidPeriods();
+            if (validPeriods != null) {
+                int index = 1;
+                for (PeriodDTO period : validPeriods) {
+                    AvailabilityCondition condition = createInstanceOfAvailabilityCondition(period.getPeriodName().get(0).getString(), index, "any", true);
+                    RecurringTimePeriodOfDayDTO timePeriod = period.getRecurringTimePeriodOfDay();
+                    if ( timePeriod != null) {
+                        addTimeband( condition, create( index, timePeriod.getStartTimeOfPeriod(), timePeriod.getEndTimeOfPeriod()));
+                    }
+                    if ( period.getRecurringDayWeekMonthPeriod() != null && period.getRecurringDayWeekMonthPeriod().getApplicableDay() != null) {
+                        condition.setDayTypes( createFromDays( index, period.getRecurringDayWeekMonthPeriod().getApplicableDay()));
+                    }
+                    parking.getValidityConditions().getAvailabilityCondition().add(condition);
+                    index++;
+                }
+            }
+            List<PeriodDTO> exceptionPeriods = overall.getExceptionPeriods();
+            if (exceptionPeriods != null) {
+                int index = 100;
+                for (PeriodDTO period : exceptionPeriods) {
+                    AvailabilityCondition condition = createInstanceOfAvailabilityCondition( period.getPeriodName().get(0).getString(), index, "any", false);
+                    RecurringTimePeriodOfDayDTO timePeriod = period.getRecurringTimePeriodOfDay();
+                    if ( timePeriod != null) {
+                        addTimeband( condition, create( index, timePeriod.getStartTimeOfPeriod(), timePeriod.getEndTimeOfPeriod()));
+                    }
+                    if ( period.getRecurringDayWeekMonthPeriod() != null && period.getRecurringDayWeekMonthPeriod().getApplicableDay() != null) {
+                        condition.setDayTypes( createFromDays( index, period.getRecurringDayWeekMonthPeriod().getApplicableDay()));
+                    }
+                    parking.getValidityConditions().getAvailabilityCondition().add(condition);
+                    index++;
+                }
+            }
+
+        }
 
         if ( place.getOpeningTimes() != null && place.getOpeningTimes().getAccessAndEgress() != null) {
             if ( place.getOpeningTimes().getAccessAndEgress() != null) {
@@ -242,7 +280,9 @@ public class Apds2NetexTransformer {
             for ( ResponsibilityRoleAssignmentDTO assignment : place.getResponsibilityRoleAssignments()) {
                 if ( assignment.getOrganisation() != null) {
                     OrganisationDTO apdsOrg = assignment.getOrganisation();
-                    GeneralOrganisation org = ObjectFactoryHelper.createInstanceOfGeneralOrganisation( apdsOrg.getId(), apdsOrg.getName(), apdsOrg.getId());
+                    GeneralOrganisation org = ObjectFactoryHelper.createInstanceOfGeneralOrganisation(
+                            String.format( ObjectFactoryHelper.ORGREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, apdsOrg.getId()),
+                            apdsOrg.getName(), apdsOrg.getId());
                     orgs.add( org);
                 }
             }
@@ -255,12 +295,15 @@ public class Apds2NetexTransformer {
         ResponsibilitySet set = ObjectFactoryHelper.createInstanceOfResponsibilitySet( String.format( ObjectFactoryHelper.RESPSETREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, place.getId()));
         set.setRoles( new ResponsibilitySet.Roles());
         if ( place.getResponsibilityRoleAssignments() != null && place.getResponsibilityRoleAssignments().size() > 0) {
+            int ndx = 1;
             for ( ResponsibilityRoleAssignmentDTO roleAssignment : place.getResponsibilityRoleAssignments()) {
                 ResponsibilityRoleAssignmentType assignment = new ResponsibilityRoleAssignmentType();
+                assignment.setVersion( ObjectFactoryHelper.ANY_VERSION);
+                assignment.setId( String.format( ObjectFactoryHelper.RESPROLE_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, ndx++));
                 assignment.getStakeholderRoleType().add( roleTypeFromApdsRoleType( roleAssignment.getType()));
                 ResponsibilityRoleAssignmentType.ResponsibleOrganisationRef orgRef = new ResponsibilityRoleAssignmentType.ResponsibleOrganisationRef();
                 if ( roleAssignment.getOrganisation() != null && roleAssignment.getOrganisation().getId() != null) {
-                    orgRef.setRef(roleAssignment.getOrganisation().getId());
+                    orgRef.setRef( String.format( ObjectFactoryHelper.ORGREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, roleAssignment.getOrganisation().getId()));
                 } else {
                     orgRef.setRef( ObjectFactoryHelper.DEFAULT_REF);
                 }

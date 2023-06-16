@@ -313,6 +313,7 @@
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
+        <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
     </xsd:complexType>
 
     <xsd:simpleType name="StakeholderRoleTypeListOfEnumerations">

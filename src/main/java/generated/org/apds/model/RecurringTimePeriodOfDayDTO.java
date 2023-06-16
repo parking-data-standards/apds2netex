@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RecurringTimePeriodOfDayDTO.JSON_PROPERTY_END_TIME_OF_PERIOD
 })
 @JsonTypeName("RecurringTimePeriodOfDay")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:19:50.624355+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T14:26:16.713251+02:00[Europe/Berlin]")
 public class RecurringTimePeriodOfDayDTO {
   public static final String JSON_PROPERTY_START_TIME_OF_PERIOD = "startTimeOfPeriod";
   private String startTimeOfPeriod;

@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RateLineCollectionDTO.JSON_PROPERTY_RATE_LINES
 })
 @JsonTypeName("RateLineCollection")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:19:50.624355+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T14:26:16.713251+02:00[Europe/Berlin]")
 public class RateLineCollectionDTO {
   public static final String JSON_PROPERTY_COLLECTION_SEQUENCE = "collectionSequence";
   private Integer collectionSequence;

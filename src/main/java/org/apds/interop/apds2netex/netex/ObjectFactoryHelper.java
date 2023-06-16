@@ -16,6 +16,8 @@ public class ObjectFactoryHelper {
     public final static String PARKING_TYPE_OF_FRAME = "FR:TypeOfFrame:NETEX_PARKING";
     private static final String ADDRESS_ID_PATTERN = "%s:PostalAddress:%s:LOC";
     public static final String RESPSETREF_ID_PATTERN = "%s:ResponsibilitySetRef:%s:LOC";
+    public static final String RESPROLE_ID_PATTERN = "%s:ResponsibilityRoleAssignment:%02d:LOC";
+    public static final String ORGREF_ID_PATTERN = "%s:Organisation:%s:LOC";
     private static final String TIMEINTERVAL_ID_PATTERN = "%s:TimeIntervalPrice:%s:LOC";
     private static final ObjectFactory netexFactory = new ObjectFactory();
 

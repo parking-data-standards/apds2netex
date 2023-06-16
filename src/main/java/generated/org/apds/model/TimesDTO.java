@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   TimesDTO.JSON_PROPERTY_ACCESS_AND_EGRESS
 })
 @JsonTypeName("Times")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:19:50.624355+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T14:26:16.713251+02:00[Europe/Berlin]")
 public class TimesDTO {
   public static final String JSON_PROPERTY_AVAILABLE24HOURS = "available24hours";
   private Boolean available24hours;
