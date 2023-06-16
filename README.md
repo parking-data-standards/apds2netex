@@ -23,7 +23,7 @@ an Open-Source APDS-to-NeTEx Adapter
 ## Status and request for collaboration
 The content described below provides an initial experimental approach to converting parking data between key standardised formats.  This provides potential tools to support the parking industry make its data available in a regularised manner, and meet some of the requirements that exist for data availability within the European Union. This specific instance of converter supports the conversion of data from APDS format to NeTEx format (see below for further explanation). 
 
-This converter is experimental and it is expected that wider review it likely to result in requests for improvements, additional documentation etc.  Such inputs are warmly welcomed.
+> This converter is experimental and it is expected that a wider review of it will result in requests for improvements, additional documentation etc.  Such inputs are warmly welcomed.
 
 ## APDS
 With the input of numerous parking industry professionals, the _Alliance for Parking Data Standards_ (https://www.allianceforparkingdatastandards.org) has created the APDS standard. The latest version of the standard specification is v4.0. The _Alliance_ also provides an accompanying APDS Messaging Specification (published on GitHub) to facilitate implementation work for APDS adopters. The APDS specifications also form the basis of ISO TS 5206-1:2023 _Parking – Core Data Model_, and the European CEN TS 15167-6:2022 _"DATEX II" Parking Publications_.
