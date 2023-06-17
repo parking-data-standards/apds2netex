@@ -1479,7 +1479,7 @@ This is expected to generate a response output like this one here:
 
 The converter output also successfully validates against the [NeTEx validation tool](https://greenlight.itxpt.eu) (courtesy of data4pt):  
 
-<img src="images/netexvalidator.png" width="500px">
+<img src="images/netexvalidator.png" width="600px">
 
 <br/><br/>
 
