@@ -1475,6 +1475,13 @@ This is expected to generate a response output like this one here:
 <br/>
 <img src="images/validation.png" width="500px">
 
+<br/><br/>  
+
+The converter output also successfully validates against the [NeTEx validation tool](https://greenlight.itxpt.eu) (courtesy of data4pt):  
+
+<img src="images/netexvalidator.png" width="500px">
+
+<br/><br/>
 
 ## Build Instructions
 ### Building the Library
