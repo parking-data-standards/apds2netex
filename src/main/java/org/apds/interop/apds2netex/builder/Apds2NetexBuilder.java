@@ -1,10 +1,7 @@
 package org.apds.interop.apds2netex.builder;
 
 
-import generated.eu.cen.netex.GeneralOrganisation;
-import generated.eu.cen.netex.Parking;
-import generated.eu.cen.netex.ParkingTariff;
-import generated.eu.cen.netex.ResponsibilitySet;
+import generated.eu.cen.netex.*;
 import generated.org.apds.model.PlaceDTO;
 import generated.org.apds.model.RateTableDTO;
 import generated.org.apds.model.RightSpecificationDTO;
@@ -125,6 +122,13 @@ public class Apds2NetexBuilder {
         }
 
         PublicationDelivery publication = ObjectFactoryHelper.createInstanceOfPublicationDelivery( FRAME_ID, PARTICIPANT_REF);
+
+        // FRAME DEFAULTS (not mandatory per se, but potentially checked by the NeTEx validation tool)
+        VersionFrameDefaultsStructure frameDefaults = ObjectFactoryHelper.createInstanceOfFrameDefaults();
+        frameDefaults.setDefaultCurrency( ObjectFactoryHelper.DEFAULT_CURRENCY);
+        frameDefaults.setDefaultLocale( ObjectFactoryHelper.buildLocaleDefaults());
+        frameDefaults.setDefaultLocationSystem( ObjectFactoryHelper.DEFAULT_LOCATION_SYSTEM);
+        publication.getDataObjects().getCompositeFrame().setFrameDefaults( frameDefaults);
 
         // PLACES
         for ( PlaceDTO place : places) {

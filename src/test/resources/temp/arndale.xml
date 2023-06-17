@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex">
-    <PublicationTimestamp>2023-06-16T14:26:19.323+02:00</PublicationTimestamp>
+    <PublicationTimestamp>2023-06-17T07:55:48.746+02:00</PublicationTimestamp>
     <ParticipantRef>APDS_DEMO</ParticipantRef>
     <dataObjects>
-        <CompositeFrame id="FR:CompositeFrame:bf709573-b6a5-4c4f-89e7-3fce063e063e:LOC" created="2023-06-16T14:26:19.323+02:00" version="1">
+        <CompositeFrame id="FR:CompositeFrame:5136194e-23ba-4c59-9bf9-8041a015bfdd:LOC" created="2023-06-17T07:55:48.747+02:00" version="1">
+            <FrameDefaults>
+                <DefaultLocale>
+                    <TimeZone>Europe/London</TimeZone>
+                    <DefaultLanguage>en</DefaultLanguage>
+                </DefaultLocale>
+                <DefaultLocationSystem>WGS84</DefaultLocationSystem>
+                <DefaultCurrency>GBP</DefaultCurrency>
+            </FrameDefaults>
             <frames>
                 <GeneralFrame id="GF1" version="1">
                     <TypeOfFrameRef ref="FR:TypeOfFrame:NETEX_PARKING">version="2.01:FR-NETEX_PARKING-1.0"</TypeOfFrameRef>
@@ -64,7 +72,7 @@
                             <RechargingAvailable>false</RechargingAvailable>
                             <ParkingPaymentProcess>payAndDisplay payByMobileDevice</ParkingPaymentProcess>
                         </Parking>
-                        <ParkingTariff id="397598b1-a0d2-442f-9723-b0ea849da031:0376c349-ed20-4f6f-9551-1a82f9f5f734" version="any">
+                        <ParkingTariff id="36b81b5d-1883-4a21-8dc0-03203b3619af:0376c349-ed20-4f6f-9551-1a82f9f5f734" version="any">
                             <Name lang="GB">rate table for Arndale Car Park in Manchester (general public parking)</Name>
                             <appliesTo>
                                 <ParkingRef ref="805432"/>
@@ -73,7 +81,7 @@
                                 <ParkingChargeBand>
                                     <MaximumStay>PT1H</MaximumStay>
                                     <prices>
-                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:f721e204-cb5b-492c-bd6f-b753a6f945b0:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:0:LOC" version="any">
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:2d0d3357-d5ea-4750-9a0b-ff061050599d:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:0:LOC" version="any">
                                             <Amount>3.7</Amount>
                                         </TimeIntervalPrice>
                                     </prices>
@@ -81,7 +89,7 @@
                                 <ParkingChargeBand>
                                     <MaximumStay>PT1H</MaximumStay>
                                     <prices>
-                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:410bd222-de13-4fd8-8e33-19809dd90769:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:1:LOC" version="any">
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:1d16154b-6493-42c2-9d05-ee63a142e904:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:1:LOC" version="any">
                                             <Amount>6.7</Amount>
                                         </TimeIntervalPrice>
                                     </prices>
@@ -89,7 +97,7 @@
                                 <ParkingChargeBand>
                                     <MaximumStay>PT59M</MaximumStay>
                                     <prices>
-                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:bf094750-4ad3-45dc-bb73-25bcac97bc30:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:2:LOC" version="any">
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:d93df6b9-ee83-4362-8111-ec1cce4f369d:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:2:LOC" version="any">
                                             <Amount>9.2</Amount>
                                         </TimeIntervalPrice>
                                     </prices>
@@ -97,7 +105,7 @@
                                 <ParkingChargeBand>
                                     <MaximumStay>PT59M</MaximumStay>
                                     <prices>
-                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:202c0719-822e-4100-ab6d-fe9381d89613:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:3:LOC" version="any">
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:5eabff0e-71eb-4adf-9d00-d6901650795e:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:3:LOC" version="any">
                                             <Amount>12.2</Amount>
                                         </TimeIntervalPrice>
                                     </prices>
@@ -105,7 +113,7 @@
                                 <ParkingChargeBand>
                                     <MaximumStay>PT59M</MaximumStay>
                                     <prices>
-                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:04960439-c68a-40bf-86cc-74819118e1ce:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:4:LOC" version="any">
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:eb3f6c21-523e-4a09-992a-1e896d99f89c:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:4:LOC" version="any">
                                             <Amount>15.2</Amount>
                                         </TimeIntervalPrice>
                                     </prices>
@@ -113,7 +121,7 @@
                                 <ParkingChargeBand>
                                     <MaximumStay>PT18H59M</MaximumStay>
                                     <prices>
-                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:36ca701d-33e1-45a0-8d04-4999eaff6a8b:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:5:LOC" version="any">
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:93eba2cd-ba74-49a2-ae3a-a53349e60418:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:5:LOC" version="any">
                                             <Amount>20.5</Amount>
                                         </TimeIntervalPrice>
                                     </prices>

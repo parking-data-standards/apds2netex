@@ -9,6 +9,10 @@ public class ObjectFactoryHelper {
 
     public static final String DEFAULT_REF = "DEFAULT";
     public static final String MLS_DEFAULT_LANG = "GB";
+    public static final String DEFAULT_CURRENCY = "GBP";
+    public static final String DEFAULT_LANGUAGE = "en";
+    public static final String DEFAULT_TIMEZONE = "Europe/London";
+    public static final String DEFAULT_LOCATION_SYSTEM = "WGS84"; // 4326
     public static final String DEFAULT_VERSION = "1";
     public static final String DEFAULT_PUBLICATION_VERSION = "1.0";
     public static final String ANY_VERSION = "any";
@@ -32,6 +36,13 @@ public class ObjectFactoryHelper {
         return buildMultilingualString( MLS_DEFAULT_LANG, value);
     }
 
+    public static LocaleStructure buildLocaleDefaults() {
+        LocaleStructure loc = new LocaleStructure();
+        loc.setDefaultLanguage( DEFAULT_LANGUAGE);
+        loc.setTimeZone( DEFAULT_TIMEZONE);
+        return loc;
+    }
+
     public static PublicationDelivery addMember(PublicationDelivery pub, Object newMember) {
         if ( newMember instanceof Parking) {
             pub.getDataObjects().getCompositeFrame().getFrames().getGeneralFrame().get(0).getMembers().getParking().add( (Parking) newMember);
@@ -43,6 +54,10 @@ public class ObjectFactoryHelper {
             pub.getDataObjects().getCompositeFrame().getFrames().getGeneralFrame().get(0).getMembers().getResponsibilitySet().add((ResponsibilitySet) newMember);
         }
         return pub;
+    }
+
+    public static VersionFrameDefaultsStructure createInstanceOfFrameDefaults() {
+        return netexFactory.createVersionFrameDefaultsStructure();
     }
 
     public static SimplePointVersionStructure createInstanceOfSimplePoint(BigDecimal latitude, BigDecimal longitude) {

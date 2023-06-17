@@ -64,6 +64,7 @@
 
     <xsd:complexType name="CompositeFrame_VersionStructure">
         <xsd:sequence>
+            <xsd:element name="FrameDefaults" type="VersionFrameDefaultsStructure" minOccurs="0" />
             <xsd:element name="frames" type="frames_RelStructure" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attributeGroup ref="DataManagedObjectAttributeGroup"/>
@@ -557,4 +558,31 @@
         </xsd:sequence>
         <xsd:attributeGroup ref="DataManagedObjectAttributeGroup" />
     </xsd:complexType>
+
+
+    <!-- === FRAME DEFAULTS === -->
+
+    <xsd:simpleType name="CurrencyType">
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:minLength value="3"/>
+            <xsd:maxLength value="3"/>
+            <xsd:pattern value="[A-Z][A-Z][A-Z]" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="LocaleStructure">
+        <xsd:sequence>
+            <xsd:element name="TimeZone" type="xsd:normalizedString" minOccurs="0" />
+            <xsd:element name="DefaultLanguage" type="xsd:language" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="VersionFrameDefaultsStructure">
+        <xsd:sequence>
+            <xsd:element name="DefaultLocale" type="LocaleStructure" minOccurs="0"/>
+            <xsd:element name="DefaultLocationSystem" type="xsd:normalizedString" minOccurs="0" />
+            <xsd:element name="DefaultCurrency" type="CurrencyType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
 </xsd:schema>

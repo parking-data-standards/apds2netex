@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex">
-    <PublicationTimestamp>2023-06-16T14:26:19.165+02:00</PublicationTimestamp>
+    <PublicationTimestamp>2023-06-17T07:55:48.609+02:00</PublicationTimestamp>
     <ParticipantRef>P1</ParticipantRef>
     <dataObjects>
-        <CompositeFrame id="FR:CompositeFrame:a2c8e573-0c5b-455d-8f53-d34a31bec3e7:LOC" created="2023-06-16T14:26:19.165+02:00" version="1">
+        <CompositeFrame id="FR:CompositeFrame:f50585f8-f556-4637-9b66-9f63ef0b97c4:LOC" created="2023-06-17T07:55:48.609+02:00" version="1">
             <frames>
                 <GeneralFrame id="F1" version="1">
                     <TypeOfFrameRef ref="FR:TypeOfFrame:NETEX_PARKING">version="2.01:FR-NETEX_PARKING-1.0"</TypeOfFrameRef>

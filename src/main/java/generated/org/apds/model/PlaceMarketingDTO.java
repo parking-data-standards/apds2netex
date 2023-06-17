@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   PlaceMarketingDTO.JSON_PROPERTY_WEB_U_R_LS
 })
 @JsonTypeName("Place_marketing")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T14:26:16.713251+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-17T07:55:46.551856+02:00[Europe/Berlin]")
 public class PlaceMarketingDTO {
   public static final String JSON_PROPERTY_WEB_U_R_LS = "webURLs";
   private List<String> webURLs = null;

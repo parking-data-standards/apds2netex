@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ContactEmailsDTO.JSON_PROPERTY_TYPE_CODE
 })
 @JsonTypeName("Contact_emails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T14:26:16.713251+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-17T07:55:46.551856+02:00[Europe/Berlin]")
 public class ContactEmailsDTO {
   public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
