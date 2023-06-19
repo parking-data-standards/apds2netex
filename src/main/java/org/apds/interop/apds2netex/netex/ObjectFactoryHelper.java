@@ -8,7 +8,8 @@ import java.util.UUID;
 public class ObjectFactoryHelper {
 
     public static final String DEFAULT_REF = "DEFAULT";
-    public static final String MLS_DEFAULT_LANG = "GB";
+    public static final String DEFAULT_COUNTRY = "GB";
+    public static final String MLS_DEFAULT_LANG = "en";
     public static final String DEFAULT_CURRENCY = "GBP";
     public static final String DEFAULT_LANGUAGE = "en";
     public static final String DEFAULT_TIMEZONE = "Europe/London";
@@ -80,7 +81,7 @@ public class ObjectFactoryHelper {
     public static PostalAddress createInstanceOfPostalAddress( String id) {
         PostalAddress address = netexFactory.createPostalAddress();
         address.setVersion( ANY_VERSION);
-        address.setId( String.format( ADDRESS_ID_PATTERN, MLS_DEFAULT_LANG, id));
+        address.setId( String.format( ADDRESS_ID_PATTERN, DEFAULT_COUNTRY, id));
         return address;
     }
 
@@ -101,7 +102,7 @@ public class ObjectFactoryHelper {
 
     public static TimeIntervalPrice createInstanceOfTimeIntervalPrice( String id, double amount) {
         TimeIntervalPrice price = netexFactory.createTimeIntervalPrice();
-        price.setId( String.format( TIMEINTERVAL_ID_PATTERN, MLS_DEFAULT_LANG, id));
+        price.setId( String.format( TIMEINTERVAL_ID_PATTERN, DEFAULT_COUNTRY, id));
         price.setVersion( ANY_VERSION);
         price.setAmount( amount);
         return price;

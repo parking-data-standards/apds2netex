@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ExternalIdentifierDTO.JSON_PROPERTY_ADDITIONAL_INFORMATION
 })
 @JsonTypeName("ExternalIdentifier")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-17T07:55:46.551856+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-19T10:20:52.894914+02:00[Europe/Berlin]")
 public class ExternalIdentifierDTO {
   public static final String JSON_PROPERTY_IDENTIFIER = "identifier";
   private String identifier;

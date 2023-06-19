@@ -59,7 +59,7 @@ public class Apds2NetexTransformer {
 
         parking.setId( place.getId());
         parking.setName( ObjectFactoryHelper.buildMultilingualString( place.getName().get(0).getString()));
-        parking.setResponsibilitySetRef( String.format( ObjectFactoryHelper.RESPSETREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, place.getId()));
+        parking.setResponsibilitySetRef( String.format( ObjectFactoryHelper.RESPSETREF_ID_PATTERN, ObjectFactoryHelper.DEFAULT_COUNTRY, place.getId()));
 
         if ( place.getAliases() != null && place.getAliases().size() > 0) {
             parking.setPublicCode( place.getAliases().get(0).get(0).getString());
@@ -281,7 +281,7 @@ public class Apds2NetexTransformer {
                 if ( assignment.getOrganisation() != null) {
                     OrganisationDTO apdsOrg = assignment.getOrganisation();
                     GeneralOrganisation org = ObjectFactoryHelper.createInstanceOfGeneralOrganisation(
-                            String.format( ObjectFactoryHelper.ORGREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, apdsOrg.getId()),
+                            String.format( ObjectFactoryHelper.ORGREF_ID_PATTERN, ObjectFactoryHelper.DEFAULT_COUNTRY, apdsOrg.getId()),
                             apdsOrg.getName(), apdsOrg.getId());
                     orgs.add( org);
                 }
@@ -292,18 +292,18 @@ public class Apds2NetexTransformer {
 
     public static ResponsibilitySet responsibilitySetFromPlaceDTO( PlaceDTO place) {
 
-        ResponsibilitySet set = ObjectFactoryHelper.createInstanceOfResponsibilitySet( String.format( ObjectFactoryHelper.RESPSETREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, place.getId()));
+        ResponsibilitySet set = ObjectFactoryHelper.createInstanceOfResponsibilitySet( String.format( ObjectFactoryHelper.RESPSETREF_ID_PATTERN, ObjectFactoryHelper.DEFAULT_COUNTRY, place.getId()));
         set.setRoles( new ResponsibilitySet.Roles());
         if ( place.getResponsibilityRoleAssignments() != null && place.getResponsibilityRoleAssignments().size() > 0) {
             int ndx = 1;
             for ( ResponsibilityRoleAssignmentDTO roleAssignment : place.getResponsibilityRoleAssignments()) {
                 ResponsibilityRoleAssignmentType assignment = new ResponsibilityRoleAssignmentType();
                 assignment.setVersion( ObjectFactoryHelper.ANY_VERSION);
-                assignment.setId( String.format( ObjectFactoryHelper.RESPROLE_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, ndx++));
+                assignment.setId( String.format( ObjectFactoryHelper.RESPROLE_ID_PATTERN, ObjectFactoryHelper.DEFAULT_COUNTRY, ndx++));
                 assignment.getStakeholderRoleType().add( roleTypeFromApdsRoleType( roleAssignment.getType()));
                 ResponsibilityRoleAssignmentType.ResponsibleOrganisationRef orgRef = new ResponsibilityRoleAssignmentType.ResponsibleOrganisationRef();
                 if ( roleAssignment.getOrganisation() != null && roleAssignment.getOrganisation().getId() != null) {
-                    orgRef.setRef( String.format( ObjectFactoryHelper.ORGREF_ID_PATTERN, ObjectFactoryHelper.MLS_DEFAULT_LANG, roleAssignment.getOrganisation().getId()));
+                    orgRef.setRef( String.format( ObjectFactoryHelper.ORGREF_ID_PATTERN, ObjectFactoryHelper.DEFAULT_COUNTRY, roleAssignment.getOrganisation().getId()));
                 } else {
                     orgRef.setRef( ObjectFactoryHelper.DEFAULT_REF);
                 }
