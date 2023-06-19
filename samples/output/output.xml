@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex">
+    <PublicationTimestamp>2023-06-19T10:17:52.720+02:00</PublicationTimestamp>
+    <ParticipantRef>APDS_DEMO</ParticipantRef>
+    <dataObjects>
+        <CompositeFrame id="FR:CompositeFrame:0ecb73d8-0215-40ec-ab63-dd23539abc12:LOC" created="2023-06-19T10:17:52.740+02:00" version="1">
+            <FrameDefaults>
+                <DefaultLocale>
+                    <TimeZone>Europe/London</TimeZone>
+                    <DefaultLanguage>en</DefaultLanguage>
+                </DefaultLocale>
+                <DefaultLocationSystem>WGS84</DefaultLocationSystem>
+                <DefaultCurrency>GBP</DefaultCurrency>
+            </FrameDefaults>
+            <frames>
+                <GeneralFrame id="GF1" version="1">
+                    <TypeOfFrameRef ref="FR:TypeOfFrame:NETEX_PARKING">version="2.01:FR-NETEX_PARKING-1.0"</TypeOfFrameRef>
+                    <members>
+                        <Parking id="e9943458-d679-431d-9545-bf9139ab73af" version="1" responsibilitySetRef="GB:ResponsibilitySetRef:e9943458-d679-431d-9545-bf9139ab73af:LOC">
+                            <validityConditions>
+                                <AvailabilityCondition id="FR:AvailabilityCondition:Weekdays:1" version="any">
+                                    <IsAvailable>true</IsAvailable>
+                                    <dayTypes>
+                                        <DayType id="FR:DayType:01" version="any">
+                                            <properties>
+                                                <PropertyOfDay>
+                                                    <DaysOfWeek>Monday Tuesday Wednesday Thursday Friday</DaysOfWeek>
+                                                </PropertyOfDay>
+                                            </properties>
+                                        </DayType>
+                                    </dayTypes>
+                                    <timebands id="FR:timebands:01">
+                                        <Timeband id="FR:Timeband:01" version="any">
+                                            <StartTime>07:00:00</StartTime>
+                                            <EndTime>20:00:00</EndTime>
+                                        </Timeband>
+                                    </timebands>
+                                </AvailabilityCondition>
+                                <AvailabilityCondition id="FR:AvailabilityCondition:Saturday:2" version="any">
+                                    <IsAvailable>true</IsAvailable>
+                                    <dayTypes>
+                                        <DayType id="FR:DayType:02" version="any">
+                                            <properties>
+                                                <PropertyOfDay>
+                                                    <DaysOfWeek>Saturday</DaysOfWeek>
+                                                </PropertyOfDay>
+                                            </properties>
+                                        </DayType>
+                                    </dayTypes>
+                                    <timebands id="FR:timebands:01">
+                                        <Timeband id="FR:Timeband:02" version="any">
+                                            <StartTime>07:00:00</StartTime>
+                                            <EndTime>13:00:00</EndTime>
+                                        </Timeband>
+                                    </timebands>
+                                </AvailabilityCondition>
+                                <AvailabilityCondition id="FR:AvailabilityCondition:Sundays and Holidays:100" version="any">
+                                    <IsAvailable>false</IsAvailable>
+                                    <dayTypes>
+                                        <DayType id="FR:DayType:100" version="any">
+                                            <properties>
+                                                <PropertyOfDay>
+                                                    <DaysOfWeek>Sunday</DaysOfWeek>
+                                                </PropertyOfDay>
+                                            </properties>
+                                        </DayType>
+                                    </dayTypes>
+                                </AvailabilityCondition>
+                            </validityConditions>
+                            <Name lang="en">THE PATRIARCHS</Name>
+                            <Centroid>
+                                <Location>
+                                    <Longitude>2.3508884</Longitude>
+                                    <Latitude>48.8403437</Latitude>
+                                </Location>
+                            </Centroid>
+                            <PostalAddress id="GB:PostalAddress:e9943458-d679-431d-9545-bf9139ab73af:LOC" version="any">
+                                <Street lang="en">Daubenton Road</Street>
+                                <Town lang="en">Demo City</Town>
+                                <PostCode>75015</PostCode>
+                            </PostalAddress>
+                            <PublicCode>e9943458-d679-431d-9545-bf9139ab73af</PublicCode>
+                            <ParkingLayout>underground</ParkingLayout>
+                            <TotalCapacity>334</TotalCapacity>
+                        </Parking>
+                        <ParkingTariff id="7f8b1ba9-00fa-466c-b931-de00d60eb30a:0376c349-ed20-4f6f-9551-1a82f9f5f734" version="any">
+                            <Name lang="en">general tariff</Name>
+                            <appliesTo>
+                                <ParkingRef ref="e9943458-d679-431d-9545-bf9139ab73af"/>
+                            </appliesTo>
+                            <parkingChargeBands>
+                                <ParkingChargeBand>
+                                    <prices>
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:ac016562-23e8-4a4f-a4f9-44af21368f8d:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:0:LOC" version="any">
+                                            <Amount>4.4</Amount>
+                                        </TimeIntervalPrice>
+                                    </prices>
+                                </ParkingChargeBand>
+                                <ParkingChargeBand>
+                                    <prices>
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:cd992cda-f98e-4499-9f67-4b3a3dad5063:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:1:LOC" version="any">
+                                            <Amount>3.3</Amount>
+                                        </TimeIntervalPrice>
+                                    </prices>
+                                </ParkingChargeBand>
+                                <ParkingChargeBand>
+                                    <prices>
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:e0a30415-5277-401e-a106-da3c9e35e20b:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:2:LOC" version="any">
+                                            <Amount>4.4</Amount>
+                                        </TimeIntervalPrice>
+                                    </prices>
+                                </ParkingChargeBand>
+                                <ParkingChargeBand>
+                                    <prices>
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:77e697bf-ea6c-42d3-89d8-0a91178e8bf2:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:3:LOC" version="any">
+                                            <Amount>4.4</Amount>
+                                        </TimeIntervalPrice>
+                                    </prices>
+                                </ParkingChargeBand>
+                                <ParkingChargeBand>
+                                    <prices>
+                                        <TimeIntervalPrice id="GB:TimeIntervalPrice:b4ab9319-6811-4bf3-9f94-23d09b1f6b34:0376c349-ed20-4f6f-9551-1a82f9f5f734:0:4:LOC" version="any">
+                                            <Amount>23.1</Amount>
+                                        </TimeIntervalPrice>
+                                    </prices>
+                                </ParkingChargeBand>
+                            </parkingChargeBands>
+                        </ParkingTariff>
+                        <GeneralOrganisation id="GB:Organisation:21750001600019:LOC" version="any">
+                            <CompanyNumber>21750001600019</CompanyNumber>
+                            <Name lang="en">Demo City</Name>
+                        </GeneralOrganisation>
+                        <GeneralOrganisation id="GB:Organisation:50472714000056:LOC" version="any">
+                            <CompanyNumber>50472714000056</CompanyNumber>
+                            <Name lang="en">Demo Operator</Name>
+                        </GeneralOrganisation>
+                        <ResponsibilitySet id="GB:ResponsibilitySetRef:e9943458-d679-431d-9545-bf9139ab73af:LOC" version="any">
+                            <roles>
+                                <ResponsibilityRoleAssignment id="GB:ResponsibilityRoleAssignment:01:LOC" version="any">
+                                    <StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+                                    <ResponsibleOrganisationRef ref="GB:Organisation:21750001600019:LOC"/>
+                                </ResponsibilityRoleAssignment>
+                                <ResponsibilityRoleAssignment id="GB:ResponsibilityRoleAssignment:02:LOC" version="any">
+                                    <StakeholderRoleType>Operation</StakeholderRoleType>
+                                    <ResponsibleOrganisationRef ref="GB:Organisation:50472714000056:LOC"/>
+                                </ResponsibilityRoleAssignment>
+                            </roles>
+                        </ResponsibilitySet>
+                    </members>
+                </GeneralFrame>
+            </frames>
+        </CompositeFrame>
+    </dataObjects>
+</PublicationDelivery>
